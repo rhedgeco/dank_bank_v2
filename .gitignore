@@ -1,0 +1,2 @@
+#ignore virtual environments created in this directory
+/venv/

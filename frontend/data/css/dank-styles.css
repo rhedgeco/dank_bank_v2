@@ -1,0 +1,139 @@
+.centered-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+body {
+    --rgb-r: 127.5;
+    --rgb-g: 127.5;
+    --rgb-b: 127.5;
+    --height: 0;
+    --depth: 4;
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+    color: white;
+}
+
+.primary-color {
+    --rgb-r: 139;
+    --rgb-g: 195;
+    --rgb-b: 74;
+    --height: 0;
+    --depth: 0;
+
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+}
+
+.secondary-color {
+    --rgb-r: 255;
+    --rgb-g: 193;
+    --rgb-b: 7;
+    --height: 0;
+    --depth: 0;
+
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+}
+
+.grey {
+    --rgb-r: 127.5;
+    --rgb-g: 127.5;
+    --rgb-b: 127.5;
+    --height: 0;
+    --depth: 0;
+
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+}
+
+.white {
+    --rgb-r: 255;
+    --rgb-g: 255;
+    --rgb-b: 255;
+    --height: 0;
+    --depth: 0;
+
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+}
+
+.black {
+    --rgb-r: 0;
+    --rgb-g: 0;
+    --rgb-b: 0;
+    --height: 0;
+    --depth: 0;
+
+    background-color: rgb(
+            calc(var(--rgb-r) - ((var(--rgb-r) / 5) * var(--depth)) + (((255 - var(--rgb-r)) / 5) * var(--height))),
+            calc(var(--rgb-g) - ((var(--rgb-g) / 5) * var(--depth)) + (((255 - var(--rgb-g)) / 5) * var(--height))),
+            calc(var(--rgb-b) - ((var(--rgb-b) / 5) * var(--depth)) + (((255 - var(--rgb-b)) / 5) * var(--height)))
+    );
+}
+
+.white-text {
+    color: white;
+}
+
+.black-text {
+    color: black;
+}
+
+.lighten-4 {
+    --height: 4;
+    --depth: 0;
+}
+
+.lighten-3 {
+    --height: 3;
+    --depth: 0;
+}
+
+.lighten-2 {
+    --height: 2;
+    --depth: 0;
+}
+
+.lighten-1 {
+    --height: 1;
+    --depth: 0;
+}
+
+.darken-1 {
+    --height: 0;
+    --depth: 1;
+}
+
+.darken-2 {
+    --height: 0;
+    --depth: 2;
+}
+
+.darken-3 {
+    --height: 0;
+    --depth: 3;
+}
+
+.darken-4 {
+    --height: 0;
+    --depth: 4;
+}
