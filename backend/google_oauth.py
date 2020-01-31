@@ -22,10 +22,6 @@ class GoogleOauth:
         with open(html_path, 'r') as f:
             self.html = f.read()
 
-    def on_get(self, req, resp):
-        resp.status = falcon.HTTP_OK
-        resp.body = self.html
-
     def on_post(self, req, resp):
         if not validate_params(req.params, 'idtoken'):
             raise falcon.HTTPBadRequest('oauth post requires \'idtoken\' parameter')
