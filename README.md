@@ -43,6 +43,10 @@ its dependencies. From inside the git repo folder run:
 ```
 pip install -e general_falcon_webserver/.
 ```
+Install dank_bank_v2's dependencies last
+```
+pip install -e .
+```
 
 ####Run the app
 To run the app, all we need to do is run:
