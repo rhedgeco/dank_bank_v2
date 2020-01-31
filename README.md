@@ -3,7 +3,7 @@ Group based interactive debt managing app
 
 ## Installation Instructions
 
-#### Submodule Usage
+### Submodule Usage
 This project uses git submodules to clone it use these commands
 ```
 git clone https://github.com/rhedgeco/dank_bank_v2.git
@@ -18,7 +18,7 @@ git submodule init
 git submodule update
 ```
 
-#### Creating a Virtual Environment
+### Creating a Virtual Environment
 you can run in your base python env, but when you install dependencies you may not want to install them to your
 default python installation.
 
@@ -37,7 +37,7 @@ Any time you want to run the program you must be working inside the virtual envi
 workon dank_bank_v2_env
 ```
 
-#### Installing dependencies
+### Installing dependencies
 dank_bank_v2 itself does not have any dependencies, but we depend on general_falcon_webserver, so we need to install
 its dependencies. From inside the git repo folder run:
 ```
@@ -48,7 +48,7 @@ Install dank_bank_v2's dependencies last
 pip install -e .
 ```
 
-#### Run the app
+### Run the app
 To run the app, all we need to do is run:
 ```
 python app.py
