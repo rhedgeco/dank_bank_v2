@@ -9,6 +9,7 @@ from backend.google_oauth import GoogleOauth
 
 def parse_args():
     parser = ArgumentParser(description="Website for Grace and Ryan's Wedding!")
+    # Parse args for port in case system cannot serve on port 80
     parser.add_argument("--port", type=int, default=80, help="Port to host server.")
     parsed_args = parser.parse_args()
     return parsed_args

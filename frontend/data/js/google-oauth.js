@@ -11,7 +11,8 @@ function onSignIn(googleUser) {
     document.getElementById('login-photo').innerHTML = '' +
         '<img src="'+profile.getImageUrl()+'" ' +
         'alt="profile-photo" ' +
-        'style="width: 100px; height: 100px">';
+        'style="width: 100px; height: 100px; border-radius: 50px">';
+    document.getElementById('gsi').remove();
 
     send_token(id_token);
 }
