@@ -1,6 +1,7 @@
 import falcon
-
-from pathlib import Path
+import cachecontrol
+import google.auth.transport.requests
+import requests
 
 from backend.database_manager import DatabaseManager
 from backend.backend_utils import validate_params
@@ -22,7 +23,10 @@ class GoogleOauth:
         token = req.params['idtoken']
         # example from https://developers.google.com/identity/sign-in/web/backend-auth
         try:
-            idinfo = id_token.verify_oauth2_token(token, requests.Request(), CLIENT_ID)
+            session = requests.Request()
+            cached_session = cachecontrol.CacheControl(session)
+            request = google.auth.transport.requests.Request(session=cached_session)
+            idinfo = id_token.verify_oauth2_token(token, request, CLIENT_ID)
 
             if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
                 raise ValueError('Wrong issuer.')
