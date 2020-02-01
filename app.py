@@ -16,7 +16,7 @@ db = SqliteDatabase('dank_bank_v2', db_config)
 manager = DatabaseManager(db)
 
 # Add google oauth routing
-g_oauth = GoogleOauth('frontend/oauth_page.html', manager)
+g_oauth = GoogleOauth(manager)
 app.add_route('g-oauth', g_oauth)
 
 # Launch the webserver

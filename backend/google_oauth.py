@@ -12,15 +12,8 @@ CLIENT_ID = '67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent
 
 
 class GoogleOauth:
-    def __init__(self, html_page: str, db: DatabaseManager):
+    def __init__(self, db: DatabaseManager):
         self.db = db
-
-        html_path = Path(html_page).absolute()
-        if not html_path.exists():
-            raise FileNotFoundError(f'Could not find frontend html page "{html_page}"')
-
-        with open(html_path, 'r') as f:
-            self.html = f.read()
 
     def on_post(self, req, resp):
         if not validate_params(req.params, 'idtoken'):
