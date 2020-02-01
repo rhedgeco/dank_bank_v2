@@ -17,7 +17,7 @@ def parse_args():
 
 def configure_app():
     # Create WebApp
-    app = WebApp('frontend')
+    app = WebApp('frontend', 'page404.html')
 
     # Create and set up database
     with open(Path('backend') / 'database_setup.sql') as file:
