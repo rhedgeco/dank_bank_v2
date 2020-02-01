@@ -1,7 +1,7 @@
-create table google_oauth
+create table if not exists google_oauth
 (
     userid text not null
 );
 
-create unique index google_oauth_userid_uindex
+create unique index if not exists google_oauth_userid_uindex
     on google_oauth (userid);
