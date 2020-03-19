@@ -41,7 +41,7 @@ First navigate to the dank bank directory in the terminal
 
 Then create a virtual environment
 ```
-virtualenv venv
+virtualenv -p python3 venv
 ```
 Then every time you want to use that environment to run the server, activate it
 ```
