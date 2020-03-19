@@ -36,7 +36,17 @@ Any time you want to run the program you must be working inside the virtual envi
 ```
 workon dank_bank_v2_env
 ```
+### Creating a virtual environment without virtualenvwrapper on Mac
+First navigate to the dank bank directory in the terminal
 
+Then create a virtual environment
+```
+virtualenv venv
+```
+Then every time you want to use that environment to run the server, activate it
+```
+source venv/bin/activate
+```
 ### Installing dependencies
 dank_bank_v2 itself does not have any dependencies, but we depend on general_falcon_webserver, so we need to install
 its dependencies. From inside the git repo folder run:
