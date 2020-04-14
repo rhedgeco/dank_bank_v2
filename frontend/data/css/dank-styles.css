@@ -1,7 +1,40 @@
-.centered-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 95vh;
+/* .centered-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body {
+  background-color: #24252a;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 10%;
+}
+
+#app-name {
+  cursor: pointer;
+  font-size: 30px;
+}
+
+.nav-links {
+  list-style: none;
+}
+
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 30px;
 }
