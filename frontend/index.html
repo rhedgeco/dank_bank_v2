@@ -20,38 +20,54 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
-  <header>
-    <p id="app-name">Dank Bank V2</p>
+  <!-- <header>
     <div>
       <ul class="nav-links">
-        <li>
-          <div
-            id="gsi"
-            class="g-signin2"
-            data-onsuccess="onSignIn"
-            style="margin-bottom: 2rem;"
-          ></div>
-        </li>
+        <li></li>
         <li>
           <div id="login-photo" class="center-align"></div>
           <p id="main-text"></p>
         </li>
       </ul>
     </div>
-  </header>
-  <body class="grey darken-4 white-text">
-    <p
-      class="light-green darken-1 center-align"
-      style="padding: 1rem; margin: 0; width: 200px;"
-    >
-      Primary Color
-    </p>
-    <p
-      class="amber center-align"
-      style="padding: 1rem; margin: 0; width: 200px;"
-    >
-      Secondary Color
-    </p>
+  </header> -->
+  <body>
+    <div class="container-home">
+      <div id="background">
+        <p>DANK BANK</p>
+      </div>
+
+      <img class="cover-photo" src="moneystack.png" />
+      <h1>Dank Bank</h1>
+      <p>Debt management made simple.</p>
+      <div
+        id="gsi"
+        class="g-signin2"
+        data-onsuccess="onSignIn"
+        style="margin-bottom: 2rem;"
+      ></div>
+    </div>
+    <div class="grid-wrapper">
+      <div class="box">
+        <h4>Create Groups</h4>
+        <p>
+          Create groups to track debt between all your different friend circles
+        </p>
+      </div>
+      <div class="box">
+        <h4>Track Debt</h4>
+        <p>
+          Track who owes you, so you don't forget to get paid back for coffee
+        </p>
+      </div>
+      <div class="box">
+        <h4>Transfer Debt</h4>
+        <p>
+          If you owe Joe for lunch, but Greg owes you for coffee, Greg now owes
+          Joe!
+        </p>
+      </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
