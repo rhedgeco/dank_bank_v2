@@ -3,6 +3,8 @@
 
 #ignore virtual environment directory
 /venv/
+/dank_bank_v2_env/
+/dank_bank_v2_env2/
 
 # Created by https://www.gitignore.io/api/python
 # Edit at https://www.gitignore.io/?templates=python
