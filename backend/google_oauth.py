@@ -33,7 +33,7 @@ class GoogleOauth:
             user_id = id_info['sub']
             session_token = self.db.sign_in_or_create_oauth_user(user_id)
             resp.status = falcon.HTTP_OK
-            resp.body = token
+            resp.body = session_token
 
         except ValueError:
             raise falcon.HTTPUnauthorized('Token not accepted')
