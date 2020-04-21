@@ -1,7 +1,26 @@
-create table if not exists google_oauth
+create table if not exists groups
 (
-    userid text not null
+    id   int not null
+        constraint groups_pk
+            primary key,
+    name text
 );
 
-create unique index if not exists google_oauth_userid_uindex
-    on google_oauth (userid);
+create unique index groups_id_uindex
+    on groups (id);
+
+create table if not exists users
+(
+    userid          text not null,
+    session_id      text,
+    session_timeout text
+);
+
+create unique index google_oauth_userid_uindex
+    on users (userid);
+
+create table if not exists users_groups
+(
+    user_id  text,
+    group_id int
+);

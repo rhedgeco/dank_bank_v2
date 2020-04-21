@@ -31,7 +31,10 @@ class GoogleOauth:
                 raise ValueError('Wrong issuer.')
 
             user_id = id_info['sub']
-            self.db.sign_in_or_create_oauth_user(user_id)
+            session_token = self.db.sign_in_or_create_oauth_user(user_id)
+            resp.status = falcon.HTTP_OK
+            resp.body = token
+
         except ValueError:
             raise falcon.HTTPUnauthorized('Token not accepted')
             pass
