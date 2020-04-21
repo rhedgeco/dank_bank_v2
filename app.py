@@ -30,6 +30,8 @@ def configure_app():
     g_oauth = GoogleOauth(manager)
     app.add_route('g-oauth', g_oauth)
 
+    # TODO: Add group management backend
+
     return app
 
 
