@@ -12,6 +12,7 @@ create unique index groups_id_uindex
 create table if not exists users
 (
     userid          text not null,
+    nickname        text,
     session_id      text,
     session_timeout text
 );

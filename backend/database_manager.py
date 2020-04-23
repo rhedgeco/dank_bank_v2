@@ -19,8 +19,15 @@ class DatabaseManager:
                            f"WHERE NOT EXISTS(SELECT 1 FROM users WHERE userid={userid})")
 
         token = uuid.uuid4().hex
-        self.db.send_query(f"REPLACE INTO users(session_id, session_timeout) "
-                           f"VALUES ('{token}', "
+        self.db.send_query(f"REPLACE INTO users(userid, session_id, session_timeout) "
+                           f"VALUES ('{userid}', '{token}', "
                            f"'{(dt.now() + datetime.timedelta(0, TIME_EXPIRE)).strftime(TIME_FORMAT)}')")
 
         return token
+
+    def get_user_info(self, session: str):
+        user = self.db.fetchone_query(f"SELECT * FROM users WHERE session_id='{session}'")
+        user = {
+            "nickname": user['nickname']
+        }
+        print(user)
