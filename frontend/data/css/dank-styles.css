@@ -60,6 +60,7 @@ body {
 .cover-photo {
   max-width: 20em;
   height: auto;
+  margin-top: 10px;
 }
 
 #background {
@@ -73,6 +74,10 @@ body {
   right: 0;
   z-index: -1;
   overflow: hidden;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
 }
 
 #background p {
@@ -87,11 +92,12 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
   grid-gap: 20px;
   padding: 0px 50px;
+  margin: 0px 50px;
 }
 
 .box {
   background-color: #444;
-  padding: 40px;
+  padding: 30px;
   margin: 20px;
   border-radius: 25px;
 }
@@ -109,15 +115,16 @@ body {
 }
 
 .box > img {
-  width: 100%;
+  display: block;
+  margin: auto;
+  max-width: 15em;
+  height: auto;
 }
 
 .box > p {
   color: rgba(255, 255, 255, 0.7);
-  text-align: center;
 }
 
 .box > h4 {
   color: rgba(255, 255, 255);
-  text-align: center;
 }
