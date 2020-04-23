@@ -7,7 +7,6 @@ from backend.database_manager import DatabaseManager
 from backend.backend_utils import validate_params
 
 from google.oauth2 import id_token
-from google.auth.transport import requests
 
 CLIENT_ID = '67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com'
 
@@ -23,16 +22,19 @@ class GoogleOauth:
         token = req.params['idtoken']
         # example from https://developers.google.com/identity/sign-in/web/backend-auth
         try:
-            session = requests.Request()
+            session = requests.session()
             cached_session = cachecontrol.CacheControl(session)
             request = google.auth.transport.requests.Request(session=cached_session)
-            idinfo = id_token.verify_oauth2_token(token, request, CLIENT_ID)
+            id_info = id_token.verify_oauth2_token(token, request, CLIENT_ID)
 
-            if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            if id_info['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
                 raise ValueError('Wrong issuer.')
 
-            userid = idinfo['sub']
-            self.db.sign_in_or_create_oauth_user(userid)
+            user_id = id_info['sub']
+            session_token = self.db.sign_in_or_create_oauth_user(user_id)
+            resp.status = falcon.HTTP_OK
+            resp.body = session_token
+
         except ValueError:
             raise falcon.HTTPUnauthorized('Token not accepted')
             pass
