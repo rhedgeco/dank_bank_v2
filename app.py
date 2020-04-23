@@ -5,6 +5,7 @@ from general_falcon_webserver import WebApp, SqliteDatabase
 
 from backend.database_manager import DatabaseManager
 from backend.google_oauth import GoogleOauth
+from backend.users import Users
 
 
 def parse_args():
@@ -29,6 +30,10 @@ def configure_app():
     # Add google oauth routing
     g_oauth = GoogleOauth(manager)
     app.add_route('g-oauth', g_oauth)
+
+    # TODO: Add group management backend
+    users = Users(manager)
+    app.add_route('users', users)
 
     return app
 

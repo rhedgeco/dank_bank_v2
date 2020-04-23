@@ -7,13 +7,6 @@ function onSignIn(googleUser) {
     console.log('Image URL: ' + profile.getImageUrl());
     console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
 
-    document.getElementById('main-text').innerText = 'Welcome, ' + profile.getName();
-    document.getElementById('login-photo').innerHTML = '' +
-        '<img src="'+profile.getImageUrl()+'" ' +
-        'alt="profile-photo" ' +
-        'style="width: 100px; height: 100px; border-radius: 50px">';
-    document.getElementById('gsi').remove();
-
     send_token(id_token);
 }
 
