@@ -1,0 +1,35 @@
+#background {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  color: rgba(50, 50, 50, 0.7);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 7px;
+  font-size: 12vw;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+#background p {
+  text-align: justify;
+  margin: 0;
+  color: rgba(50, 50, 50, 0.7);
+}
+
+#home {
+  height: 100vw;
+  min-width: 70vw;
+  overflow: hidden;
+  background-color: rgb(30, 30, 30);
+  z-index: -1;
+  position: relative;
+}

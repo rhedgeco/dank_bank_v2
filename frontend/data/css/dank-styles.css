@@ -83,9 +83,10 @@ body {
 
 .grid-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  /* grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
-  margin: 0px 250px;
+  margin: 0 15vw;
 }
 
 .box {
@@ -96,7 +97,7 @@ body {
   box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
   /* .box {
     padding: 10px;
     margin: 5px;
@@ -104,6 +105,7 @@ body {
 
   .grid-wrapper {
     margin: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   }
 }
 

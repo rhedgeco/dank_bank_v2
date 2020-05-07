@@ -1,0 +1,23 @@
+#groups {
+  list-style: square;
+}
+
+#groups li {
+  border-left: 2px solid;
+  border-color: #666666;
+  padding: 10px 10px;
+  cursor: pointer;
+}
+
+#groups li:hover {
+  background-color: #444444;
+  border-left: 2px solid;
+  border-color: green;
+}
+
+#menu {
+  float: left;
+  max-height: 100vw;
+  min-width: 10vw;
+  padding: 20px;
+}
