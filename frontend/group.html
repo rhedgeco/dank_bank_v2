@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dank Bank v.2</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="data/css/index.css" />
+    <link rel="stylesheet" href="data/css/group.css" />
+    <link rel="stylesheet" href="data/css/group_styles.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="data/js/google-oauth.js"></script>
+    <meta
+      name="google-signin-client_id"
+      content="67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="menu">
+      <h3>Jane Doe</h3>
+      <h5>Groups</h5>
+      <ul id="groups">
+        <li>Work Buddies</li>
+        <li>Bar Gang</li>
+        <li>Study Group</li>
+        <li>Roomies</li>
+      </ul>
+    </div>
+    <div id="group_page">
+      <div id="header">
+        <div class="left">
+          <h3 id="group_name">Work Buddies</h3>
+          <p id="group_count">5 members</p>
+        </div>
+        <div class="right">
+          <button onclick="handler()">Add transaction</button>
+          <div>
+            <button>View Debt</button>
+            <button>View Transactions</button>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <ul class="debt_list">
+          <li>
+            <p>example -> example</p>
+            <button>Settle</button>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example -> example</p>
+            <button>Settle</button>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example -> example</p>
+            <button>Settle</button>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example -> example</p>
+            <button>Settle</button>
+            <p>$100.00</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="data/js/script.js"></script>
+  </body>
+</html>

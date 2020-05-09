@@ -1,0 +1,45 @@
+#group_page {
+  height: 100vw;
+  min-width: 70vw;
+  overflow: hidden;
+  background-color: rgb(30, 30, 30);
+  position: relative;
+}
+
+#header {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+}
+
+.main {
+  background-color: #333333;
+  margin: 20px;
+  height: 80vh;
+  border-radius: 35px;
+  overflow: auto;
+}
+
+.debt_list > li {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  margin: 20px;
+  font-size: 20px;
+  border-radius: 35px;
+  background-color: #666666;
+}
+
+p:first-of-type {
+  margin: 2px;
+  margin-right: 10px;
+}
+
+p:nth-of-type(2) {
+  margin: 2px;
+  margin-left: auto;
+}
+
+.debt_list > li > button {
+  height: 30%;
+}

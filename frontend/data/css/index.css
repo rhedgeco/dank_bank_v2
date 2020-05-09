@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap');
+
+body {
+  background-color: #333333;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+  overflow: hidden;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
