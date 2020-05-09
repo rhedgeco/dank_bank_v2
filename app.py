@@ -4,9 +4,9 @@ from argparse import ArgumentParser
 from general_falcon_webserver import WebApp, SqliteDatabase
 
 from backend.database_manager import DatabaseManager
-from backend.google_oauth import GoogleOauth
-from backend.groups import Groups
-from backend.users import Users
+from backend.endpoints.google_oauth import GoogleOauth
+from backend.endpoints.groups import Groups
+from backend.endpoints.users import Users
 
 
 def parse_args():
