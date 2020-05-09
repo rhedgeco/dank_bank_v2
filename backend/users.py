@@ -1,3 +1,4 @@
+import json
 import falcon
 
 from backend.backend_utils import validate_params
@@ -12,4 +13,4 @@ class Users:
         if not validate_params(req.params, 'session'):
             raise falcon.HTTPBadRequest('users get requires \'session\' parameter')
 
-        self.db.get_user_info(req.params['session'])
+        resp.body = json.dumps(self.db.get_user_info(req.params['session']), ensure_ascii=True)
