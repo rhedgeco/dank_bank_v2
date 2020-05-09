@@ -27,6 +27,7 @@ create table if not exists users_groups
 create table if not exists transactions
 (
     transid     text not null,
+    groupid     text not null,
     user_pay    text not null,
     users_paid  text not null,
     amount      text not null,

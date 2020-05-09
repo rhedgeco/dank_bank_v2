@@ -34,6 +34,12 @@ class DatabaseManager:
         self.db.send_query(f"INSERT INTO users_groups (user_id, group_id) "
                            f"VALUES ('{user['userid']}', '{group_id}')")
 
+    def create_transaction(self, session: str, group_id: str, amount: float, paid: str, desc: str = ""):
+        user = self._get_user_from_database(session)
+        trans_id = uuid.uuid4().hex
+        self.db.send_query(f"INSERT INTO transactions (transid, groupid, user_pay, users_paid, amount, description) "
+                           f"VALUES ('{trans_id}', '{group_id}', '{user['user_id']}', '{paid}', '{amount}', '{desc}')")
+
     def get_user_info(self, session: str):
         user = self._get_user_from_database(session)
         groups = self.db.fetchall_query(f"SELECT * FROM users_groups WHERE user_id='{user['userid']}'")
@@ -51,7 +57,12 @@ class DatabaseManager:
 
     def get_group_info(self, session: str, group_id: str):
         group = self._validate_user_group(session, group_id)
-        return group
+        trans = self.db.fetchall_query(f"SELECT * FROM transactions WHERE groupid='{group_id}'")
+        group_info = {
+            'group_name': group['name'],
+            'transactions': trans
+        }
+        return group_info
 
     def _get_user_from_database(self, session: str):
         user = self.db.fetchone_query(f"SELECT * FROM users WHERE session_id='{session}'")
