@@ -10,6 +10,7 @@ setup(
         "cachecontrol",
         'google',
         'requests',
-        'falcon'
+        'falcon',
+        'httpie'
     ]
 )
