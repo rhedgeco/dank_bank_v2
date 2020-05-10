@@ -17,6 +17,7 @@ function send_token(id_token) {
     xhr.onload = function () {
         if (xhr.status === 200) {
             console.log(xhr.responseText); // SessionID
+            window.location = 'home.html';
         }
     };
     xhr.send();
