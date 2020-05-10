@@ -26,7 +26,7 @@
 }
 
 #home {
-  height: 100vw;
+  height: 100vh;
   min-width: 70vw;
   overflow: hidden;
   background-color: rgb(30, 30, 30);
