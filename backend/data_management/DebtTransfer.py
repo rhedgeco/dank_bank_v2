@@ -17,4 +17,5 @@ class Transaction:
     split_type: str = 'even'
 
 def transfer_debt(transaction: List[Transaction]):
+    # TODO: take the transactions and output a list of debts
     pass
