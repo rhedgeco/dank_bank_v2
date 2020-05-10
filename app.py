@@ -6,6 +6,7 @@ from general_falcon_webserver import WebApp, SqliteDatabase
 from backend.database_manager import DatabaseManager
 from backend.endpoints.google_oauth import GoogleOauth
 from backend.endpoints.groups import Groups
+from backend.endpoints.transactions import Transactions
 from backend.endpoints.users import Users
 
 
@@ -37,6 +38,9 @@ def configure_app():
 
     groups = Groups(manager)
     app.add_route('groups', groups)
+
+    trans = Transactions(manager)
+    app.add_route('transactions', trans)
 
     return app
 

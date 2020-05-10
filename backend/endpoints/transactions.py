@@ -9,8 +9,16 @@ class Transactions:
     def __init__(self, db: DatabaseManager):
         self.db = db
 
+    def on_get(self, req, resp):
+        if not validate_params(req.params, 'session', 'group_id'):
+            raise falcon.HTTPBadRequest("transactions post requires 'session', 'group_id' parameters")
+
+        session = req.params['session']
+        group_id = req.params['group_id']
+        resp.body = json.dumps(self.db.get_transactions(session, group_id), ensure_ascii=True)
+
     def on_post(self, req, resp):
-        if not validate_params(req.params, 'session', 'group_id', ):
+        if not validate_params(req.params, 'session', 'group_id', 'amount', 'paid'):
             raise falcon.HTTPBadRequest("transactions post requires 'session', 'group_id', 'amount', 'paid' parameters")
 
         session = req.params['session']
