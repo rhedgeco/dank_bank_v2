@@ -4,8 +4,10 @@ from argparse import ArgumentParser
 from general_falcon_webserver import WebApp, SqliteDatabase
 
 from backend.database_manager import DatabaseManager
-from backend.google_oauth import GoogleOauth
-from backend.users import Users
+from backend.endpoints.google_oauth import GoogleOauth
+from backend.endpoints.groups import Groups
+from backend.endpoints.transactions import Transactions
+from backend.endpoints.users import Users
 
 
 def parse_args():
@@ -31,9 +33,14 @@ def configure_app():
     g_oauth = GoogleOauth(manager)
     app.add_route('g-oauth', g_oauth)
 
-    # TODO: Add group management backend
     users = Users(manager)
     app.add_route('users', users)
+
+    groups = Groups(manager)
+    app.add_route('groups', groups)
+
+    trans = Transactions(manager)
+    app.add_route('transactions', trans)
 
     return app
 

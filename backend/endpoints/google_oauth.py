@@ -17,7 +17,7 @@ class GoogleOauth:
 
     def on_post(self, req, resp):
         if not validate_params(req.params, 'idtoken'):
-            raise falcon.HTTPBadRequest('oauth post requires \'idtoken\' parameter')
+            raise falcon.HTTPBadRequest("oauth post requires 'idtoken' and 'nickname' parameters")
 
         token = req.params['idtoken']
         # example from https://developers.google.com/identity/sign-in/web/backend-auth
@@ -31,7 +31,8 @@ class GoogleOauth:
                 raise ValueError('Wrong issuer.')
 
             user_id = id_info['sub']
-            session_token = self.db.sign_in_or_create_oauth_user(user_id)
+            user_nickname = id_info['name']
+            session_token = self.db.sign_in_or_create_oauth_user(user_id, user_nickname)
             resp.status = falcon.HTTP_OK
             resp.body = session_token
 

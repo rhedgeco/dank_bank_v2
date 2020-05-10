@@ -1,13 +1,11 @@
 create table if not exists groups
 (
-    id   int not null
-        constraint groups_pk
-            primary key,
-    name text
+    groupid text not null,
+    name    text
 );
 
-create unique index groups_id_uindex
-    on groups (id);
+create unique index groups_groupid_uindex
+    on groups (groupid);
 
 create table if not exists users
 (
@@ -23,5 +21,18 @@ create unique index google_oauth_userid_uindex
 create table if not exists users_groups
 (
     user_id  text,
-    group_id int
+    group_id text
 );
+
+create table if not exists transactions
+(
+    transid     text not null,
+    groupid     text not null,
+    user_pay    text not null,
+    users_paid  text not null,
+    amount      text not null,
+    description text
+);
+
+create unique index transactions_transid_uindex
+    on transactions (transid);
