@@ -18,7 +18,7 @@ users:
         - session : the id from the current session
 
 groups:
-    POST - creates a group and returns nothing
+    POST - creates a group and returns http code 200
         - session : the id from the current session
         - group_name : the name for the new group
 
@@ -27,7 +27,7 @@ groups:
         - group_id : the id representing the group
 
 transactions:
-    POST - creates new transactions and returns nothing
+    POST - creates new transactions and returns http code 200
         - session : the id from the current session
         - group_id : the id representing the group
         - amount : a decimal number representing the amount paid in USD

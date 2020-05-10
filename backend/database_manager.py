@@ -34,10 +34,9 @@ class DatabaseManager:
         self.db.send_query(f"INSERT INTO transactions (trans_id, group_id, user_pay, users_paid, amount, description) "
                            f"VALUES ('{trans_id}', '{group_id}', '{user['user_id']}', '{paid}', '{amount}', '{desc}')")
 
-    def get_transactions(self, session:str, group_id:str):
+    def get_transactions(self, session: str, group_id: str):
         self._validate_user_session(session)
         return self._get_transactions(group_id)
-
 
     def get_user_info(self, session: str):
         user = self._get_user_from_database(session)
@@ -51,6 +50,7 @@ class DatabaseManager:
             })
 
         user = {
+            "id": user['user_id'],
             "nickname": user['nickname'],
             "groups": group_ids
         }
@@ -76,7 +76,23 @@ class DatabaseManager:
         group_info = {
             'group_name': group['name'],
             'users': users,
-            'transactions': trans
+            'transactions': trans,
+            'debts': [
+                {
+                    'from': 12345,
+                    'from_name': 'Ryan Hedgecock',
+                    'to': 54321,
+                    'to_name': 'Danny Giap',
+                    'amount': 100.00
+                },
+                {
+                    'from': 51423,
+                    'from_name': 'Jeevanesh',
+                    'to': 12345,
+                    'to_name': 'Danny Giap',
+                    'amount': 169.00
+                }
+            ]
         }
         return group_info
 
