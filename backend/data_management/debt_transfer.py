@@ -4,9 +4,10 @@ from typing import List
 
 @dataclass
 class Debt:
-    payer: str
-    leech: str
+    pay_from: str
+    pay_to: str
     amount: float
+
 
 @dataclass
 class Transaction:
@@ -16,6 +17,7 @@ class Transaction:
 
     split_type: str = 'even'
 
+
 def transfer_debt(transaction: List[Transaction]):
     # TODO: take the transactions and output a list of debts
-    pass
+    return []
