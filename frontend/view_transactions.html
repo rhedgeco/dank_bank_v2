@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dank Bank v.2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="data/css/index.css" />
+    <link rel="stylesheet" href="data/css/group.css" />
+    <link rel="stylesheet" href="data/css/group_styles.css" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="data/js/google-oauth.js"></script>
+    <meta
+      name="google-signin-client_id"
+      content="67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div id="menu">
+      <h3>Jane Doe</h3>
+      <h5>Groups</h5>
+      <ul id="groups">
+        <li>Work Buddies</li>
+        <li>Bar Gang</li>
+        <li>Study Group</li>
+        <li>Roomies</li>
+      </ul>
+    </div>
+    <div id="group_page">
+      <div id="header">
+        <div class="left">
+          <h3 id="group_name">Work Buddies</h3>
+          <p id="group_count">5 members</p>
+        </div>
+        <div class="right">
+          <button id="transBtn">Add transaction</button>
+          <div>
+            <button>View Debt</button>
+            <button>View Transactions</button>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div id="myModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Add Transaction</h3>
+            <div class="input-field col s12">
+              <select style="display: block;">
+                <option value="" disabled selected>Who paid</option>
+                <option value="1">Jane Doe</option>
+                <option value="2">Ryan</option>
+                <option value="3">Jeev</option>
+              </select>
+            </div>
+            <label for"paid">paid</label>
+            <input type="number" min="1" step="any" id="paid" name="paid" placeholder="$0.00"/>
+            <!-- <input class="form-control" type="number" min="1" step="any" id="paid" name="paid" placeholder="$0.00"/> -->
+        
+            <label for"for">for</label>
+            <input type="text" id="for" name="for" placeholder="transaction (e.g &quot;lunch&quot;)"><br><br>
+          </div>
+        </div>
+        <ul class="debt_list">
+          <li>
+            <p>example transaction</p>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example transaction</p>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example transaction</p>
+            <p>$100.00</p>
+          </li>
+          <li>
+            <p>example transaction</p>
+            <p>$100.00</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="data/js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
