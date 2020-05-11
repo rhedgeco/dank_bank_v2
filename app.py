@@ -6,6 +6,7 @@ from general_falcon_webserver import WebApp, SqliteDatabase
 from backend.database_manager import DatabaseManager
 from backend.endpoints.google_oauth import GoogleOauth
 from backend.endpoints.groups import Groups
+from backend.endpoints.self_updater import Updater
 from backend.endpoints.transactions import Transactions
 from backend.endpoints.users import Users
 
@@ -41,6 +42,9 @@ def configure_app():
 
     trans = Transactions(manager)
     app.add_route('transactions', trans)
+
+    updater = Updater()
+    app.add_route('git_updater', updater)
 
     return app
 
