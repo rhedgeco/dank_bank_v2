@@ -9,7 +9,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
     />
     <link rel="stylesheet" href="data/css/index.css" />
     <link rel="stylesheet" href="data/css/view_transaction.css" />
@@ -53,7 +53,50 @@
           <h3>Add Transaction <span class="close">&times;</span></h3>
           <!-- Modal content -->
           <div class="modal-content">
-            <p>cofdjskafdsal</p>
+            <form>
+              <fieldset>
+                <select style="display: block;">
+                  <option value="" disabled selected>Who</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+                <input type="number" min="0" step=".01" placeholder="$0.00" />
+                <input type="text" placeholder='transaction (e.g. "lunch")' />
+                <span>split between:</span>
+                <div class="split-list">
+                  <div>
+                    <input type="checkbox" id="test5" />
+                    <label for="test5">Red</label>
+                  </div>
+                  <div>
+                    <input type="checkbox" id="test4" />
+                    <label for="test4">blue</label>
+                  </div>
+                </div>
+              </fieldset>
+              <!-- <div class="input-field col s12">
+                <select style="display: block;">
+                  <option value="" disabled selected>Who</option>
+                  <option value="1">Option 1</option>
+                  <option value="2">Option 2</option>
+                  <option value="3">Option 3</option>
+                </select>
+              </div>
+              <div class="input-group mb-3">
+                <input type="number" min="0" step=".01" placeholder="$0.00" />
+              </div>
+              <div class="input-group mb-3">
+                <input type="text" placeholder='transaction (e.g. "lunch")' />
+              </div>
+              <div>
+                <span>split between</span>
+                <p>
+                  <input type="checkbox" id="test5" />
+                  <label for="test5">Red</label>
+                </p> -->
+              <!-- </div> -->
+            </form>
           </div>
         </div>
         <ul class="transaction_list">

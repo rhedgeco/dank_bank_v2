@@ -1,3 +1,6 @@
+button {
+  background-color: #333333;
+}
 #group_page {
   height: 100vw;
   min-width: 70vw;
@@ -27,14 +30,18 @@
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
-  width: 50%; /* Full width */
-  height: 50%; /* Full height */
+  min-width: 20%;
+  height: auto;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(30, 30, 30); /* Fallback color */
   margin: 10% auto; /* 15% from the top and centered */
   padding: 20px;
-  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.4);
   border-radius: 25px;
+}
+
+fieldset {
+  border-style: none;
 }
 
 /* Modal Content/Box */
@@ -62,6 +69,12 @@
 
 #transModal h3 {
   text-align: center;
+}
+
+.split-list {
+  background-color: rgb(30, 30, 30);
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .debt_list > li {
@@ -96,4 +109,17 @@ p:nth-of-type(2) {
   font-size: 20px;
   border-radius: 35px;
   background-color: #666666;
+}
+
+input,
+select,
+textarea {
+  color: white;
+  background-color: #333333;
+  margin-bottom: 5px;
+}
+
+textarea:focus,
+input:focus {
+  color: white;
 }
