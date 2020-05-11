@@ -1,10 +1,14 @@
 import uuid
 import datetime
+from typing import List
+
 import falcon
 
 from datetime import datetime as dt
 
 from general_falcon_webserver.backend.general_manager.databases import SqliteDatabase
+
+from backend.data_management.debt_transfer import Transaction, TransitiveDebt, Debt
 
 TIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 TIME_EXPIRE = 600
@@ -71,31 +75,29 @@ class DatabaseManager:
             })
 
         trans = self._get_transactions(group_id)
+
+        trans_list: List[Transaction] = []
         for t in trans:
-            del t['trans_id']
-            del t['group_id']
+            trans.append(Transaction(trans['user_pay'], str(trans['users_paid']).split(','), trans['amount']))
+
+        debts: List[Debt] = TransitiveDebt().one_call(trans_list)
+        debts_json = []
+        for d in debts:
+            debts_json.append(
+                {
+                    'from': d.leech_id,
+                    'to': d.payer_id,
+                    'amount': d.amount
+                }
+            )
 
         group_info = {
             'group_name': group['name'],
             'users': users,
             'transactions': trans,
-            'debts': [
-                {
-                    'from': 12345,
-                    'from_name': 'Ryan Hedgecock',
-                    'to': 54321,
-                    'to_name': 'Danny Giap',
-                    'amount': 100.00
-                },
-                {
-                    'from': 51423,
-                    'from_name': 'Jeevanesh',
-                    'to': 12345,
-                    'to_name': 'Danny Giap',
-                    'amount': 169.00
-                }
-            ]
+            'debts': debts_json
         }
+
         return group_info
 
     def _get_transactions(self, group_id: str):
@@ -132,3 +134,7 @@ class DatabaseManager:
         self.db.send_query(f"UPDATE users SET session_id='{session}', "
                            f"session_timeout='{(dt.now() + datetime.timedelta(0, TIME_EXPIRE)).strftime(TIME_FORMAT)}' "
                            f"WHERE user_id='{user_id}'")
+
+    def _make_debts_list(self, trans: List[Transaction]):
+
+        return []
