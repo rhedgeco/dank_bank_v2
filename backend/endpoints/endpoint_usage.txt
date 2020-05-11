@@ -11,7 +11,7 @@ format:
 
 g-oauth:
     POST - Gets a session token for a user
-        - id_token : the token received from a google oauth transaction
+        - idtoken : the token received from a google oauth transaction
 
 users:
     GET - returns info regarding the user

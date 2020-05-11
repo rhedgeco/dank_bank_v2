@@ -5,7 +5,10 @@ function init_home() {
     xhr.onload = function () {
         if (xhr.status === 200) {
             var json = JSON.parse(xhr.responseText);
+            console.log(xhr.responseText);
             document.getElementById('name').innerText = json['nickname'];
+            document.getElementById('login-photo').innerHTML =
+                "<img src='" + json['photo'] + "' style='height: 200px; border-radius: 100px'/>";
         }
     };
     xhr.send();

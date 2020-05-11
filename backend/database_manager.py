@@ -14,8 +14,9 @@ class DatabaseManager:
     def __init__(self, db: SqliteDatabase):
         self.db = db
 
-    def sign_in_or_create_oauth_user(self, user_id: str, nickname: str):
-        self.db.send_query(f"INSERT OR IGNORE INTO users (user_id, nickname) VALUES ('{user_id}', '{nickname}')")
+    def sign_in_or_create_oauth_user(self, user_id: str, nickname: str, photo: str):
+        self.db.send_query(f"INSERT OR IGNORE INTO users (user_id, nickname, photo) "
+                           f"VALUES ('{user_id}', '{nickname}', '{photo}')")
         session = uuid.uuid4().hex
         self._reset_user_session(user_id, session)
         return session
@@ -52,6 +53,7 @@ class DatabaseManager:
         user = {
             "id": user['user_id'],
             "nickname": user['nickname'],
+            "photo": user['photo'],
             "groups": group_ids
         }
 
