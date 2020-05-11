@@ -11,7 +11,6 @@ setup(
         'google',
         'requests',
         'falcon',
-        'httpie',
-        'gitpython'
+        'httpie'
     ]
 )

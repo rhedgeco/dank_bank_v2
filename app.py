@@ -43,9 +43,6 @@ def configure_app():
     trans = Transactions(manager)
     app.add_route('transactions', trans)
 
-    updater = Updater()
-    app.add_route('git_updater', updater)
-
     return app
 
 
