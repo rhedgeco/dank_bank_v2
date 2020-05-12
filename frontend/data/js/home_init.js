@@ -31,11 +31,9 @@ function init_home() {
       document.getElementById('name').innerText = json['nickname']; //retrieve and display nick name
 
       // display user photo
-      document.getElementById('login-photo').innerHTML =
-          '<img src="'+json['photo']+'" style="height: 200px; border-radius: 100px" />';
+      document.getElementById('login-photo').src = json['photo'];
 
       let groups = json['groups']; //retreive groups from JSON
-      let testGroups = ['roommates', 'work'];
 
       //go through list of groups and create list elements
       for (var i = 0; i < groups.length; i++) {
