@@ -29,21 +29,17 @@
       <h3 id="name">Jane Doe</h3>
       <button id="createBtn">Create Group</button>
       <h5>Groups</h5>
-
       <ul id="groups"></ul>
       <div id="createModal" class="modal">
-        <h3>Create Group<span class="close">&times;</span></h3>
+        <h3>
+          Create Group<span id="close_group_form" class="close">&times;</span>
+        </h3>
         <!-- Modal content -->
         <div class="modal-content">
           <form id="group_form">
             <div>
               <div class="input-field col s6">
-                <input
-                  id="group_name"
-                  type="text"
-                  class="validate"
-                  value="roomies"
-                />
+                <input id="group_name" type="text" placeholder="" />
                 <label class="active" for="group_name">Group Name</label>
               </div>
               <button class="btn waves-effect waves-light" id="create_form">
@@ -65,5 +61,6 @@
 
     <script src="data/js/home_init.js"></script>
     <script src="data/js/create_group.js"></script>
+    <script src="data/js/load_modals.js"></script>
   </body>
 </html>
