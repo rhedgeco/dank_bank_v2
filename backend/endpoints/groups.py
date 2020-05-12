@@ -32,3 +32,11 @@ class Groups:
         session = req.params['session']
         group_id = req.params['group_id']
         self.db.add_user_to_group(session, group_id)
+
+    def on_delete(self, req, resp):
+        if not validate_params(req.params, 'session', 'group_id'):
+            raise falcon.HTTPBadRequest("groups post requires 'session' and 'group_id' parameters")
+
+        session = req.params['session']
+        group_id = req.params['group_id']
+        self.db.delete_group(session, group_id)

@@ -21,17 +21,19 @@ function init_home() {
   xhr.open('GET', 'api/users?session=' + getCookie('session_id'));
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
+    if (xhr.status !== 200) {
+      window.location = '/';
+    }
+
     if (xhr.status === 200) {
       var json = JSON.parse(xhr.responseText);
       console.log(json);
       document.getElementById('name').innerText = json['nickname']; //retrieve and display nick name
 
       // display user photo
-      document.getElementById('login-photo').innerHTML =
-          '<img src="'+json['photo']+'" style="height: 200px; border-radius: 100px" />';
+      document.getElementById('login-photo').src = json['photo'];
 
       let groups = json['groups']; //retreive groups from JSON
-      let testGroups = ['roommates', 'work'];
 
       //go through list of groups and create list elements
       for (var i = 0; i < groups.length; i++) {
