@@ -25,6 +25,11 @@ function init_home() {
       var json = JSON.parse(xhr.responseText);
       console.log(json);
       document.getElementById('name').innerText = json['nickname']; //retrieve and display nick name
+
+      // display user photo
+      document.getElementById('login-photo').innerHTML =
+          '<img src="'+json['photo']+'" style="height: 200px; border-radius: 100px" />';
+
       let groups = json['groups']; //retreive groups from JSON
       let testGroups = ['roommates', 'work'];
 
