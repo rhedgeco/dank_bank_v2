@@ -26,6 +26,10 @@ groups:
         - session : the id from the current session
         - group_id : the id representing the group
 
+    PUT - adds a user to a group
+        - session : the id from the current session
+        - group_id : the id of the group one is adding themselves to
+
 transactions:
     POST - creates new transactions and returns http code 200
         - session : the id from the current session

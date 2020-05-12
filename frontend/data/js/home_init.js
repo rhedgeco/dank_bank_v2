@@ -47,7 +47,7 @@ function init_home() {
             'GET',
             'api/groups?session=' +
               getCookie('session_id') +
-              '&id=' +
+              '&group_id=' +
               list_item.id
           );
           xhr.setRequestHeader(
