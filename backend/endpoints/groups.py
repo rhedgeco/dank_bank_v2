@@ -10,12 +10,12 @@ class Groups:
         self.db = db
 
     def on_get(self, req, resp):
-        if not validate_params(req.params, 'session', 'id'):
-            raise falcon.HTTPBadRequest("groups get requires 'session' and 'id' parameters")
+        if not validate_params(req.params, 'session', 'group_id'):
+            raise falcon.HTTPBadRequest("groups get requires 'session' and 'group_id' parameters")
 
         session = req.params['session']
-        id = req.params['id']
-        resp.body = json.dumps(self.db.get_group_info(session, id), ensure_ascii=True)
+        group_id = req.params['group_id']
+        resp.body = json.dumps(self.db.get_group_info(session, group_id), ensure_ascii=True)
 
     def on_post(self, req, resp):
         if not validate_params(req.params, 'session', 'group_name'):
@@ -24,3 +24,11 @@ class Groups:
         session = req.params['session']
         name = req.params['group_name']
         self.db.create_new_group(session, name)
+
+    def on_put(self, req, resp):
+        if not validate_params(req.params, 'session', 'group_id'):
+            raise falcon.HTTPBadRequest("groups post requires 'session' and 'group_id' parameters")
+
+        session = req.params['session']
+        group_id = req.params['group_id']
+        self.db.add_user_to_group(session, group_id)
