@@ -31,15 +31,16 @@ function init_home() {
       //go through list of groups and create list elements
       for (var i = 0; i < groups.length; i++) {
         let group = document.createElement('li');
-        group.id = Object.keys(groups[i]);
-        group.appendChild(document.createTextNode(Object.values(groups[i])[0]));
+        group.id = Object.keys(groups[i]); //set id to the same group id from the db
+        group.appendChild(document.createTextNode(Object.values(groups[i])[0])); //get group name from the object
         group_list.appendChild(group);
       }
 
-      //add event listener to each list element
+      //add event listener to each group on the list
       for (let i = 0; i < group_list.childElementCount; i++) {
         let list_item = group_list.childNodes[i];
 
+        //make API call to retrieve group info
         list_item.addEventListener('click', () => {
           let xhr = new XMLHttpRequest();
           xhr.open(
@@ -55,7 +56,8 @@ function init_home() {
           );
           xhr.onload = function () {
             if (xhr.status === 200) {
-              console.log('successfully retrieving group');
+              var groupInfo = JSON.parse(xhr.responseText);
+              console.log(groupInfo);
             }
           };
           xhr.send();
