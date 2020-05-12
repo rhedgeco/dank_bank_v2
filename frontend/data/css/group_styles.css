@@ -21,3 +21,7 @@
   min-width: 10vw;
   padding: 20px;
 }
+
+.selected {
+  background-color: #444444;
+}
