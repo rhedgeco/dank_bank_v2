@@ -6,6 +6,10 @@ function init_home() {
     if (xhr.status === 200) {
       var json = JSON.parse(xhr.responseText);
       document.getElementById('name').innerText = json['nickname']; //retrieve nick name
+      document.getElementById('login-photo').innerHTML =
+        "<img src='" +
+        json['photo'] +
+        "' style='height: 200px; border-radius: 100px'/>";
       console.log(json);
       let group_list = document.getElementById('groups'); //store reference to the list of groups
       let groups = json['groups']; //retreive groups
