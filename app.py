@@ -6,13 +6,12 @@ from general_falcon_webserver import WebApp, SqliteDatabase
 from backend.database_manager import DatabaseManager
 from backend.endpoints.google_oauth import GoogleOauth
 from backend.endpoints.groups import Groups
-from backend.endpoints.self_updater import Updater
 from backend.endpoints.transactions import Transactions
 from backend.endpoints.users import Users
 
 
 def parse_args():
-    parser = ArgumentParser(description="Website for Grace and Ryan's Wedding!")
+    parser = ArgumentParser(description="Dank Bank v2")
     # Parse args for port in case system cannot serve on port 80
     parser.add_argument("--port", type=int, default=80, help="Port to host server.")
     parsed_args = parser.parse_args()
