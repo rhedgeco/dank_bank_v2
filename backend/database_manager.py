@@ -35,11 +35,20 @@ class DatabaseManager:
 
     def add_user_to_group(self, session: str, group_id: str):
         user = self._get_user_from_database(session)
-        if not self._validate_group_exists(group_id):
+        if not self._validate_group_exists(group_id, user['user_id']):
             raise falcon.HTTPUnauthorized('Group does not exist')
 
         self.db.send_query(f"INSERT INTO users_groups(user_id, group_id) "
                            f"VALUES ('{user['user_id']}', '{group_id}')")
+
+    def delete_group(self, session: str, group_id: str):
+        user = self._get_user_from_database(session)
+        if not self._validate_group_exists(group_id, user['user_id']):
+            raise falcon.HTTPUnauthorized('Group does not exist')
+
+        self.db.send_query(f"DELETE FROM groups WHERE group_id = '{group_id}'")
+        self.db.send_query(f"DELETE FROM users_groups WHERE group_id = '{group_id}'")
+        self.db.send_query(f"DELETE FROM transactions WHERE group_id = '{group_id}'")
 
     def create_transaction(self, session: str, group_id: str, amount: float, paid: str, desc: str = ""):
         user = self._get_user_from_database(session)
@@ -146,8 +155,10 @@ class DatabaseManager:
                            f"session_timeout='{(dt.now() + datetime.timedelta(0, TIME_EXPIRE)).strftime(TIME_FORMAT)}' "
                            f"WHERE user_id='{user_id}'")
 
-    def _validate_group_exists(self, group_id: str):
+    def _validate_group_exists(self, group_id: str, user_id: str):
         group = self.db.fetchone_query(f"SELECT * FROM groups WHERE group_id = '{group_id}'")
+        group = self.db.fetchone_query(
+            f"SELECT * FROM users_groups WHERE group_id='{group_id}' AND user_id='{user_id}'")
         if group:
             return True
         else:
