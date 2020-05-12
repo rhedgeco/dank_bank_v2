@@ -8,7 +8,7 @@ from datetime import datetime as dt
 
 from general_falcon_webserver.backend.general_manager.databases import SqliteDatabase
 
-from backend.data_management.debt_transfer import Transaction, TransitiveDebt, Debt
+from backend.data_management.debt_transfer import Transaction, Debt, transactions_to_debt
 
 TIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 TIME_EXPIRE = 600
@@ -33,6 +33,14 @@ class DatabaseManager:
         self.db.send_query(f"INSERT INTO users_groups (user_id, group_id) "
                            f"VALUES ('{user['user_id']}', '{group_id}')")
 
+    def add_user_to_group(self, session: str, group_id: str):
+        user = self._get_user_from_database(session)
+        if not self._validate_group_exists(group_id):
+            raise falcon.HTTPUnauthorized('Group does not exist')
+
+        self.db.send_query(f"INSERT INTO users_groups(user_id, group_id) "
+                           f"VALUES ('{user['user_id']}', '{group_id}')")
+
     def create_transaction(self, session: str, group_id: str, amount: float, paid: str, desc: str = ""):
         user = self._get_user_from_database(session)
         trans_id = uuid.uuid4().hex
@@ -40,7 +48,10 @@ class DatabaseManager:
                            f"VALUES ('{trans_id}', '{group_id}', '{user['user_id']}', '{paid}', '{amount}', '{desc}')")
 
     def get_transactions(self, session: str, group_id: str):
-        self._validate_user_session(session)
+        user = self.db.fetchone_query(f"SELECT * FROM users WHERE session_id='{session}'")
+        if not user:
+            raise falcon.HTTPBadRequest('Could not validate session')
+        self._validate_user_session(user['user_id'])
         return self._get_transactions(group_id)
 
     def get_user_info(self, session: str):
@@ -78,15 +89,15 @@ class DatabaseManager:
 
         trans_list: List[Transaction] = []
         for t in trans:
-            trans.append(Transaction(trans['user_pay'], str(trans['users_paid']).split(','), trans['amount']))
+            trans_list.append(Transaction(t['user_pay'], str(t['users_paid']).split(','), t['amount']))
 
-        debts: List[Debt] = TransitiveDebt().one_call(trans_list)
+        debts: List[Debt] = transactions_to_debt(trans_list)
         debts_json = []
         for d in debts:
             debts_json.append(
                 {
-                    'from': d.leech_id,
-                    'to': d.payer_id,
+                    'from': d.sender,
+                    'to': d.receiver,
                     'amount': d.amount
                 }
             )
@@ -135,6 +146,9 @@ class DatabaseManager:
                            f"session_timeout='{(dt.now() + datetime.timedelta(0, TIME_EXPIRE)).strftime(TIME_FORMAT)}' "
                            f"WHERE user_id='{user_id}'")
 
-    def _make_debts_list(self, trans: List[Transaction]):
-
-        return []
+    def _validate_group_exists(self, group_id: str):
+        group = self.db.fetchone_query(f"SELECT * FROM groups WHERE group_id = '{group_id}'")
+        if group:
+            return True
+        else:
+            return False
