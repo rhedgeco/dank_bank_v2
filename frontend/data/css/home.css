@@ -9,7 +9,6 @@
   right: 0;
   position: absolute;
   z-index: -1;
-  font-family: 'Oskar';
   font-weight: 700;
   letter-spacing: 7px;
   font-size: 12vw;
@@ -23,6 +22,7 @@
   text-align: justify;
   margin: 0;
   color: rgba(50, 50, 50, 0.7);
+  font-family: 'Oskar';
 }
 
 #home {
