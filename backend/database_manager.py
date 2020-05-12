@@ -35,7 +35,7 @@ class DatabaseManager:
 
     def add_user_to_group(self, session: str, group_id: str):
         user = self._get_user_from_database(session)
-        if not self._validate_group_exists(group_id, user['user_id']):
+        if not self._validate_group_exists(group_id):
             raise falcon.HTTPUnauthorized('Group does not exist')
 
         self.db.send_query(f"INSERT INTO users_groups(user_id, group_id) "
@@ -43,7 +43,7 @@ class DatabaseManager:
 
     def delete_group(self, session: str, group_id: str):
         user = self._get_user_from_database(session)
-        if not self._validate_group_exists(group_id, user['user_id']):
+        if not self._validate_user_in_group(user['user_id'], group_id):
             raise falcon.HTTPUnauthorized('Group does not exist')
 
         self.db.send_query(f"DELETE FROM groups WHERE group_id = '{group_id}'")
@@ -155,11 +155,16 @@ class DatabaseManager:
                            f"session_timeout='{(dt.now() + datetime.timedelta(0, TIME_EXPIRE)).strftime(TIME_FORMAT)}' "
                            f"WHERE user_id='{user_id}'")
 
-    def _validate_group_exists(self, group_id: str, user_id: str):
+    def _validate_group_exists(self, group_id: str):
         group = self.db.fetchone_query(f"SELECT * FROM groups WHERE group_id = '{group_id}'")
-        group = self.db.fetchone_query(
-            f"SELECT * FROM users_groups WHERE group_id='{group_id}' AND user_id='{user_id}'")
         if group:
+            return True
+        else:
+            return False
+
+    def _validate_user_in_group(self, user_id: str, group_id: str):
+        test = self.db.fetchone_query(f"SELECT * FROM users_groups WHERE user_id='{user_id}' AND group_id='{group_id}'")
+        if test:
             return True
         else:
             return False
