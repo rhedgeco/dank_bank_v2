@@ -8,7 +8,7 @@ from datetime import datetime as dt
 
 from general_falcon_webserver.backend.general_manager.databases import SqliteDatabase
 
-from backend.data_management.debt_transfer import Transaction, TransitiveDebt, Debt
+from backend.data_management.debt_transfer import Transaction, Debt, transactions_to_debt
 
 TIME_FORMAT = '%d/%m/%Y %H:%M:%S'
 TIME_EXPIRE = 600
@@ -31,6 +31,14 @@ class DatabaseManager:
         self.db.send_query(f"INSERT INTO groups(group_id, name) "
                            f"VALUES ('{group_id}', '{group_name}')")
         self.db.send_query(f"INSERT INTO users_groups (user_id, group_id) "
+                           f"VALUES ('{user['user_id']}', '{group_id}')")
+
+    def add_user_to_group(self, session: str, group_id: str):
+        user = self._get_user_from_database(session)
+        if not self._validate_group_exists(group_id):
+            raise falcon.HTTPUnauthorized('Group does not exist')
+
+        self.db.send_query(f"INSERT INTO users_groups(user_id, group_id) "
                            f"VALUES ('{user['user_id']}', '{group_id}')")
 
     def create_transaction(self, session: str, group_id: str, amount: float, paid: str, desc: str = ""):
