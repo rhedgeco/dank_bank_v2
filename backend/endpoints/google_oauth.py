@@ -30,8 +30,6 @@ class GoogleOauth:
             if id_info['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
                 raise ValueError('Wrong issuer.')
 
-            print(id_info['picture'])
-
             user_id = id_info['sub']
             user_nickname = id_info['name']
             user_photo = str(id_info['picture']).replace('=s96-c', '')
