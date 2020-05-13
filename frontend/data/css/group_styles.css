@@ -17,8 +17,8 @@
 
 #menu {
   float: left;
-  max-height: 100vw;
-  min-width: 10vw;
+  min-height: 100vh;
+  /* min-width: 10vw; */
   padding: 20px;
 }
 

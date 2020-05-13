@@ -25,7 +25,7 @@
   </head>
   <body>
     <div id="menu">
-      <h3>Jane Doe</h3>
+      <h3 id="name"></h3>
       <button id="createBtn">Create Group</button>
       <h5>Groups</h5>
       <ul id="groups"></ul>
@@ -41,7 +41,7 @@
                 <input id="group_name" type="text" placeholder="" />
                 <label class="active" for="group_name">Group Name</label>
               </div>
-              <button class="btn waves-effect waves-light" id="create_form">
+              <button class="btn waves-effect waves-light" id="submit_form">
                 Create
               </button>
             </div>
@@ -52,11 +52,11 @@
     <div id="group_page">
       <div id="header">
         <div class="left">
-          <h3 id="group_name">Work Buddies</h3>
+          <h3 id="group_header">Work Buddies</h3>
           <p id="group_count">5 members</p>
         </div>
         <div class="right">
-          <button onclick="handler()">Add transaction</button>
+          <button id="transBtn">Add transaction</button>
           <div>
             <button>View Debt</button>
             <button>View Transactions</button>
@@ -64,22 +64,53 @@
         </div>
       </div>
       <div class="main">
-        <ul class="debt_list">
-          <li>
-            <p>example -> example</p>
-            <button>Settle</button>
-            <p>$100.00</p>
-          </li>
-          <li>
-            <p>example -> example</p>
-            <button>Settle</button>
-            <p>$100.00</p>
-          </li>
-          <li>
-            <p>example -> example</p>
-            <button>Settle</button>
-            <p>$100.00</p>
-          </li>
+        <div id="transModal" class="modal">
+          <h3>
+            Add Transaction
+            <span id="close_trans_form" class="close">&times;</span>
+          </h3>
+          <!-- Modal content -->
+          <div class="modal-content">
+            <form>
+              <select style="display: block;" id="payer">
+                <option value="" disabled selected>Who</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <input
+                type="number"
+                min="0"
+                step=".01"
+                placeholder="$0.00"
+                id="amount"
+              />
+              <input
+                type="text"
+                placeholder='transaction (e.g. "lunch")'
+                id="trans_description"
+              />
+              <span>split between:</span>
+              <div class="split-list">
+                <div>
+                  <input type="checkbox" id="test5" />
+                  <label for="test5">Red</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="test4" />
+                  <label for="test4">blue</label>
+                </div>
+              </div>
+              <span
+                class="btn waves-effect waves-light"
+                id="submit_transaction"
+              >
+                add
+              </span>
+            </form>
+          </div>
+        </div>
+        <ul class="debt_list" id="debtList">
           <li>
             <p>example -> example</p>
             <button>Settle</button>
@@ -88,8 +119,9 @@
         </ul>
       </div>
     </div>
-    <script src="data/js/home_init.js"></script>
-    <script src="data/js/load_modals.js"></script>
-    <script src="data/js/create_group.js"></script>
+    <script type="module" src="data/js/transaction_form.js"></script>
+    <script type="module" src="data/js/group_form.js"></script>
+    <!-- <script src="data/js/create_group.js"></script> -->
+    <script type="module" src="data/js/group_init.js"></script>
   </body>
 </html>
