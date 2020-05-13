@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Dank Bank v.2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ktz5tbj.css"/>
+    <link rel="stylesheet" href="data/css/home.css"/>
+    <link rel="stylesheet" href="data/css/group_styles.css"/>
+    <link rel="stylesheet" href="data/css/index.css"/>
+    <link rel="stylesheet" href="data/css/group.css"/>
+    <link rel="stylesheet" href="data/css/create_trans.css"/>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="data/js/google-oauth.js"></script>
+    <script src="data/js/page_util.js"></script>
+    <meta
+            name="google-signin-client_id"
+            content="67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body style="background-color: #202020">
+
+
+<!--NavBar-->
+<div id="nav_bar">
+    <nav class="light-green darken-4">
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
+                <i class="material-icons">menu</i>
+            </a>
+            <a class="brand-logo" style="font-family: 'Oskar', sans-serif">Dank Bank</a>
+            <ul id="nav-mobile" class="right">
+                <li><a id="createBtn">+ New Group</a></li>
+                <li><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav grey darken-3">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img id="" src="">
+                </div>
+                <a href="/home.html" style="display: flex; padding-bottom: 16px">
+                    <img class="circle login-photo" src="">
+                    <span id="name" class="white-text name user-name"
+                          style="font-size: 20px; padding-left: 16px"></span>
+                </a>
+                <a href="#name"></a>
+            </div>
+        </li>
+        <div class="divider"></div>
+        </li>
+        <li><a class="subheader grey-text text-lighten-2">Groups</a></li>
+        <div id="groups" style="margin-left: 32px; list-style-type: none">
+
+        </div>
+    </ul>
+    <div id="createModal" class="modal">
+        <h3>Create Group<span class="close">&times;</span></h3>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form id="group_form">
+                <div>
+                    <div class="input-field col s6">
+                        <input
+                                id="group_name"
+                                type="text"
+                                class="validate"
+                                value="Roommates"
+                        />
+                        <label class="active" for="group_name">Group Name</label>
+                    </div>
+                    <button class="btn waves-effect waves-light light-green darken-3" id="create_form">
+                        Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--EndNavBar-->
+
+<div id="page_content">
+    <div id="transaction_window">
+        <h3>Add Transaction</h3>
+        <form id="transaction_content" onsubmit="return false;">
+            <div class="payment_text">
+                You paid
+                <div class="input-field inline">
+                    <input id="paid" type="number" step=0.01 class="validate">
+                    <label for="paid">Amount</label>
+                </div>
+                for
+                <div class="input-field inline">
+                    <input id="desc" type="text" class="validate">
+                    <label for="desc">Description</label>
+                </div>
+                .
+            </div>
+            <p class="payment_text">
+                Split with
+                <a class="btn btn-floating light-green waves-effect darken-3" style="margin-left: 10px;">+</a>
+            </p>
+            <ul class="group_list">
+                <li class="collection-item">Jeevanesh Lota</li>
+                <li class="collection-item">Malaak Khalil</li>
+            </ul>
+            <button class="btn light-green darken-2 waves-effect waves-light" type="submit">
+                Add Transaction
+            </button>
+        </form>
+    </div>
+</div>
+
+<!--AlwaysIncludeThese-->
+<script src="data/js/navigation_init.js"></script>
+<script src="data/js/jquery-3.4.1.min.js"></script>
+<script src="data/js/materialize.min.js"></script>
+<script src="data/js/navigation_init.js"></script>
+<script src="data/js/create_group.js"></script>
+<script>M.AutoInit();</script>
+<!--AlwaysIncludeThese-->
+</body>
+</html>
