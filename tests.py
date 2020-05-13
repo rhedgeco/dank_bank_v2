@@ -117,6 +117,7 @@ def test_add_transactions(client):
         'group_id': group_id,
         'amount': 120.0,
         'paid': f'{users[1].id},{users[2].id},{users[3].id}',
+        'description': 'Fancy Lunch'
     })
     assert res.status == '200 OK'
 
@@ -125,6 +126,7 @@ def test_add_transactions(client):
         'group_id': group_id,
         'amount': 60.0,
         'paid': f'{users[0].id},{users[2].id},{users[3].id}',
+        'description': 'Takeout'
     })
     assert res.status == '200 OK'
 
@@ -133,6 +135,7 @@ def test_add_transactions(client):
         'group_id': group_id,
         'amount': 400.0,
         'paid': f'{users[1].id},{users[2].id},{users[3].id}',
+        'description': 'Wind Surfing'
     })
     assert res.status == '200 OK'
 
@@ -141,6 +144,7 @@ def test_add_transactions(client):
         'group_id': group_id,
         'amount': 20.0,
         'paid': f'{users[1].id},{users[2].id},{users[0].id}',
+        'description': 'French Fries'
     })
     assert res.status == '200 OK'
 
@@ -172,11 +176,3 @@ def test_get_transactions(client):
     assert res.json[2]['amount'] == '400.0'
     assert res.json[3]['amount'] == '20.0'
 
-
-def test_delete_group(client):
-    user = client.simulate_get('/api/users', params={'session': users[0].session_id})
-    assert user.status == '200 OK'
-    group_id = next(iter(user.json['groups'][0]))
-
-    res = client.simulate_delete('/api/groups', params={'session': users[0].session_id, 'group_id': group_id})
-    assert res.status == '200 OK'
