@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://use.typekit.net/ktz5tbj.css"/>
-    <link rel="stylesheet" href="data/css/index.css"/>
+    <link rel="stylesheet" href="data/css/home.css"/>
     <link rel="stylesheet" href="data/css/group_styles.css"/>
+    <link rel="stylesheet" href="data/css/index.css"/>
     <link rel="stylesheet" href="data/css/group.css"/>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="data/js/google-oauth.js"></script>
@@ -18,8 +19,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
-
+<body style="background-color: #202020">
 
 
 <!--NavBar-->
@@ -29,9 +29,10 @@
             <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
                 <i class="material-icons">menu</i>
             </a>
-            <a href="home.html" class="brand-logo" style="font-family: 'Oskar'">Dank Bank</a>
+            <a class="brand-logo" style="font-family: 'Oskar', sans-serif">Dank Bank</a>
             <ul id="nav-mobile" class="right">
-                <li><a onclick="sign_out();">Sign Out</a></li>
+                <li><a id="createBtn">+ New Group</a></li>
+                <li><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
             </ul>
         </div>
     </nav>
@@ -42,8 +43,9 @@
                     <img id="" src="">
                 </div>
                 <a href="/home.html" style="display: flex; padding-bottom: 16px">
-                    <img id="photo" class="circle" src="">
-                    <span id="name" class="white-text name" style="font-size: 20px; padding-left: 16px">John Doe</span>
+                    <img class="circle login-photo" src="">
+                    <span id="name" class="white-text name user-name"
+                          style="font-size: 20px; padding-left: 16px"></span>
                 </a>
                 <a href="#name"></a>
             </div>
@@ -55,88 +57,72 @@
 
         </div>
     </ul>
+    <div id="createModal" class="modal">
+        <h3>Create Group<span class="close">&times;</span></h3>
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form id="group_form">
+                <div>
+                    <div class="input-field col s6">
+                        <input
+                                id="group_name"
+                                type="text"
+                                class="validate"
+                                value="Roommates"
+                        />
+                        <label class="active" for="group_name">Group Name</label>
+                    </div>
+                    <span class="btn waves-effect waves-light light-green darken-3" id="create_form">
+                        Create
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <!--EndNavBar-->
 
-
-
+<!--PUT UR STUFF HERE-->
 <div id="page_content" style="background-color: #202020">
-    <div id="header">
-        <div class="left">
-            <h3 id="group_name">Work Buddies</h3>
-            <p id="group_count">5 members</p>
-        </div>
-        <div class="right">
-            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light">Add transaction</button>
-            <div style="margin-top: 8px">
-                <button class="btn grey darken-2 waves-effect waves-light">View Debt</button>
-                <button class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
-            </div>
-        </div>
-    </div>
-    <div class="main">
-        <div id="transModal" class="modal">
-            <h3>Add Transaction <span class="close">&times;</span></h3>
-            <!-- Modal content -->
-            <div class="modal-content">
-                <form>
-                    <fieldset>
-                        <select style="display: block;">
-                            <option value="" disabled selected>Who</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
-                            <option value="3">Option 3</option>
-                        </select>
-                        <input type="number" min="0" step=".01" placeholder="$0.00"/>
-                        <input type="text" placeholder='transaction (e.g. "lunch")'/>
-                        <span>split between:</span>
-                        <div class="split-list">
-                            <div>
-                                <input type="checkbox" id="test5"/>
-                                <label for="test5">Red</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" id="test4"/>
-                                <label for="test4">blue</label>
-                            </div>
-                        </div>
-                        <button class="btn waves-effect waves-light" id="trans_form">
-                            add
-                        </button>
-                    </fieldset>
-                </form>
-            </div>
-        </div>
-        <ul class="transaction_list">
-            <li>
-                <p>Example transaction</p>
-                <p>$100.00</p>
-            </li>
-            <li>
-                <p>Example transaction</p>
-                <p>$100.00</p>
-            </li>
-            <li>
-                <p>Example transaction</p>
-                <p>$100.00</p>
-            </li>
-            <li>
-                <p>Example transaction</p>
-                <p>$100.00</p>
-            </li>
-        </ul>
-    </div>
+  <div id="header">
+      <div class="left">
+          <h3 id="groupName">Work Buddies</h3>
+          <p id="group_count">5 members</p>
+      </div>
+      <div class="right buttons">
+          <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light">Add transaction</button>
+          <div style="margin-top: 8px">
+              <button class="btn grey darken-2 waves-effect waves-light">View Debt</button>
+              <button class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
+          </div>
+      </div>
+  </div>
+  <div class="main">
+      <ul class="debt_list" id="debtList">
+          <li>
+              <p>Example transaction</p>
+              <p>$100.00</p>
+          </li>
+      </ul>
 </div>
+
 
 <!--AlwaysIncludeThese-->
 <script src="data/js/navigation_init.js"></script>
 <script src="data/js/jquery-3.4.1.min.js"></script>
 <script src="data/js/materialize.min.js"></script>
 <script src="data/js/navigation_init.js"></script>
+<script src="data/js/create_group.js"></script>
 <script>M.AutoInit();</script>
 <!--AlwaysIncludeThese-->
-<script type="modal" src="data/js/group_init.js"></script>
-
-
+<script type="module" src="data/js/group_init.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
