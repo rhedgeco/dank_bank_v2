@@ -59,6 +59,7 @@ function loadGroup() {
 }
 
 window.onload = async function () {
+  this.console.log('relaoding');
   let user = await loadUser();
   configureGroups();
   loadGroup();
