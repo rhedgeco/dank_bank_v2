@@ -13,4 +13,5 @@ class Users:
         if not validate_params(req.params, 'session'):
             raise falcon.HTTPBadRequest("users get requires 'session' parameter")
 
-        resp.body = json.dumps(self.db.get_user_info(req.params['session']), ensure_ascii=True)
+        session = req.params['session'].replace("'", "").replace('"', '')
+        resp.body = json.dumps(self.db.get_user_info(session), ensure_ascii=True)

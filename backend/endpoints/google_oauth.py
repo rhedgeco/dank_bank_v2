@@ -17,9 +17,9 @@ class GoogleOauth:
 
     def on_post(self, req, resp):
         if not validate_params(req.params, 'idtoken'):
-            raise falcon.HTTPBadRequest("oauth post requires 'idtoken' and 'nickname' parameters")
+            raise falcon.HTTPBadRequest("oauth post requires 'idtoken' parameter")
 
-        token = req.params['idtoken']
+        token = req.params['idtoken'].replace("'", "").replace('"', '')
         # example from https://developers.google.com/identity/sign-in/web/backend-auth
         try:
             session = requests.session()
