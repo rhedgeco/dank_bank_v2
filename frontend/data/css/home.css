@@ -21,8 +21,10 @@
 #background p {
   text-align: justify;
   margin: 0;
-  color: rgba(50, 50, 50, 0.7);
+  color: rgba(50, 50, 50, 0.2);
   font-family: 'Oskar';
+  font-size: 200px;
+  white-space: nowrap;
 }
 
 #home {

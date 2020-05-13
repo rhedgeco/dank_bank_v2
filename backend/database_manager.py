@@ -41,6 +41,15 @@ class DatabaseManager:
         self.db.send_query(f"INSERT INTO users_groups(user_id, group_id) "
                            f"VALUES ('{user['user_id']}', '{group_id}')")
 
+    def delete_group(self, session: str, group_id: str):
+        user = self._get_user_from_database(session)
+        if not self._validate_user_in_group(user['user_id'], group_id):
+            raise falcon.HTTPUnauthorized('Group does not exist')
+
+        self.db.send_query(f"DELETE FROM groups WHERE group_id = '{group_id}'")
+        self.db.send_query(f"DELETE FROM users_groups WHERE group_id = '{group_id}'")
+        self.db.send_query(f"DELETE FROM transactions WHERE group_id = '{group_id}'")
+
     def create_transaction(self, session: str, group_id: str, amount: float, paid: str, desc: str = ""):
         user = self._get_user_from_database(session)
         trans_id = uuid.uuid4().hex
@@ -149,6 +158,13 @@ class DatabaseManager:
     def _validate_group_exists(self, group_id: str):
         group = self.db.fetchone_query(f"SELECT * FROM groups WHERE group_id = '{group_id}'")
         if group:
+            return True
+        else:
+            return False
+
+    def _validate_user_in_group(self, user_id: str, group_id: str):
+        test = self.db.fetchone_query(f"SELECT * FROM users_groups WHERE user_id='{user_id}' AND group_id='{group_id}'")
+        if test:
             return True
         else:
             return False

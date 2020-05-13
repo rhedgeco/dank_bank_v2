@@ -17,8 +17,13 @@
 
 #menu {
   float: left;
+<<<<<<< HEAD
   min-height: 100vh;
   /* min-width: 10vw; */
+=======
+  max-height: 100vh;
+  min-width: 10vw;
+>>>>>>> master
   padding: 20px;
 }
 

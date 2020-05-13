@@ -30,6 +30,10 @@ groups:
         - session : the id from the current session
         - group_id : the id of the group one is adding themselves to
 
+    DELETE - deletes a group
+        - session : the id from the current session
+        - group_id : the id of the group to delete
+
 transactions:
     POST - creates new transactions and returns http code 200
         - session : the id from the current session
