@@ -11,12 +11,24 @@ button {
 }
 #groupName {
   font-size: 4em;
+  margin: 0;
+  margin-left: 10px;
+}
+
+#group_count {
+  margin: 0;
+  margin-left: 10px;
 }
 
 #header {
   display: flex;
   padding: 10px 20px 10px 60px;
   justify-content: space-between;
+}
+
+#groupID {
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
 
 .main {
@@ -82,7 +94,7 @@ fieldset {
 .debt_list > li {
   display: flex;
   align-items: center;
-  padding: 15px 35px;
+  padding: 10px 30px;
   margin: 20px;
   font-size: 2em;
   border-radius: 35px;

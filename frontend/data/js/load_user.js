@@ -25,8 +25,6 @@ export function configureGroups() {
       window.location = 'group.html?group_id=' + list_item.id;
     });
   }
-  let last = group_list.childNodes[group_list.childElementCount - 1];
-  console.log(last.value);
 }
 
 export function loadUser() {

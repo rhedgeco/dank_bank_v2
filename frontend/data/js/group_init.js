@@ -17,14 +17,16 @@ function loadGroup() {
     if (xhr.status === 200) {
       var groupInfo = JSON.parse(xhr.responseText);
       console.log(groupInfo);
+      console.log(Object.keys(groupInfo['users']));
       document.getElementById('groupName').innerText = groupInfo['group_name'];
+      document.getElementById('groupID').innerHTML = id;
 
-      if (groupInfo['users'].length < 2) {
+      if (Object.keys(groupInfo['users']).length < 2) {
         document.getElementById('group_count').innerText =
-          groupInfo['users'].length + ' member';
+          Object.keys(groupInfo['users']).length + ' member';
       } else {
         document.getElementById('group_count').innerText =
-          groupInfo['users'].length + ' member';
+          Object.keys(groupInfo['users']).length + ' member';
       }
 
       let debtList = document.getElementById('debtList');
