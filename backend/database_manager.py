@@ -123,7 +123,20 @@ class DatabaseManager:
         user = self._get_user_from_database(session)
         trans = self.db.fetchone_query(f"SELECT * FROM transactions WHERE trans_id='{trans_id}'")
         self._validate_user_in_group(user['user_id'], trans['group_id'])
-        return trans
+
+        paid_ids = trans['users_paid'].split(',')
+        paid = []
+        for p in paid_ids:
+            paid.append(self._get_user_by_id(p)['nickname'])
+
+        trans_info = {
+            'payer': self._get_user_by_id(trans['user_pay'])['nickname'],
+            'amount': trans['amount'],
+            'description': trans['description'],
+            'paid': paid,
+        }
+
+        return trans_info
 
     def _get_transactions(self, group_id: str):
         return self.db.fetchall_query(f"SELECT * FROM transactions WHERE group_id='{group_id}'")
@@ -133,6 +146,12 @@ class DatabaseManager:
         if not user:
             raise falcon.HTTPBadRequest('Could not validate session')
         self._validate_user_session(user['user_id'])
+        return user
+
+    def _get_user_by_id(self, user_id:str):
+        user = self.db.fetchone_query(f"SELECT * FROM users WHERE user_id='{user_id}'")
+        if not user:
+            raise falcon.HTTPBadRequest('Could not locate user.')
         return user
 
     def _validate_user_group(self, session: str, group_id: str):
