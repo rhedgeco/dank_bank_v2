@@ -32,9 +32,9 @@
             </a>
             <a class="brand-logo" style="font-family: 'Oskar', sans-serif">Dank Bank</a>
             <ul id="nav-mobile" class="right">
-                <li><a id="createBtn">+ New Group</a></li>
-                <li><a href="join_group.html">Join Group</a></li>
-                <li><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
+                <li class="hide-on-med-and-down"><a onclick="create_btn_clicked();">+ New Group</a></li>
+                <li class="hide-on-med-and-down"><a href="join_group.html">Join Group</a></li>
+                <li class="hide-on-med-and-down"><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
             </ul>
         </div>
     </nav>
@@ -53,11 +53,13 @@
             </div>
         </li>
         <div class="divider"></div>
+        <li><a onclick="create_btn_clicked();" class="white-text">+ New Group</a></li>
+        <li><a href="join_group.html" class="white-text">Join Group</a></li>
+        <li><a onclick="sign_out();" style="color: #ff686d;">Sign Out</a></li>
+        <div class="divider"></div>
         </li>
         <li><a class="subheader grey-text text-lighten-2">Groups</a></li>
-        <div id="groups" style="margin-left: 32px; list-style-type: none">
-
-        </div>
+        <div id="groups" style="margin-left: 32px; list-style-type: none"></div>
     </ul>
     <div id="createModal" class="modal">
         <h3>Create Group<span class="close">&times;</span></h3>
