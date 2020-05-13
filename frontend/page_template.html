@@ -32,7 +32,7 @@
             <a class="brand-logo" style="font-family: 'Oskar', sans-serif">Dank Bank</a>
             <ul id="nav-mobile" class="right">
                 <li><a id="createBtn">+ New Group</a></li>
-                <li><a onclick="sign_out();"style="color: #ff686d; background-color: #303030">Sign Out</a></li>
+                <li><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
             </ul>
         </div>
     </nav>
@@ -82,15 +82,65 @@
 </div>
 <!--EndNavBar-->
 
-<div id="home">
-    <div id="background">
-        <p>DANK BANK</p>
+<div id="page_content" style="background-color: #202020">
+    <div id="header">
+        <div class="left">
+            <h3 id="group_title">Work Buddies</h3>
+            <h5>Transactions</h5>
+        </div>
     </div>
-    <h1 class="center-align">Account</h1>
-    <div class="center-align">
-        <img src="" class="login-photo" alt="" style="width: 200px; border-radius: 100px"/>
+    <div class="main">
+        <div id="transModal" class="modal">
+            <h3>Add Transaction <span class="close">&times;</span></h3>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <form>
+                    <fieldset>
+                        <select style="display: block;">
+                            <option value="" disabled selected>Who</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <input type="number" min="0" step=".01" placeholder="$0.00"/>
+                        <input type="text" placeholder='transaction (e.g. "lunch")'/>
+                        <span>split between:</span>
+                        <div class="split-list">
+                            <div>
+                                <input type="checkbox" id="test5"/>
+                                <label for="test5">Red</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="test4"/>
+                                <label for="test4">blue</label>
+                            </div>
+                        </div>
+                        <button class="btn waves-effect waves-light" id="trans_form">
+                            add
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <ul class="transaction_list">
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+        </ul>
     </div>
-    <h3 class="center-align user-name">Name goes here</h3>
 </div>
 
 <!--AlwaysIncludeThese-->
@@ -98,9 +148,8 @@
 <script src="data/js/jquery-3.4.1.min.js"></script>
 <script src="data/js/materialize.min.js"></script>
 <script src="data/js/navigation_init.js"></script>
+<script src="data/js/create_group.js"></script>
 <script>M.AutoInit();</script>
 <!--AlwaysIncludeThese-->
-<script src="data/js/home_init.js"></script>
-<script src="data/js/create_group.js"></script>
 </body>
 </html>
