@@ -54,7 +54,7 @@ def transactions_to_debt(trans: List[Transaction]):
     for t in trans:
         for l in t.leeches_id:
             add_trans_to_debts(
-                amount=(int(float(t.amount) * 100) // int(len(t.leeches_id) + 1)) / 100,
+                amount=(int(float(t.amount) * 100) // int(len(t.leeches_id))) / 100,
                 send=l,
                 receive=t.payer_id
             )
@@ -64,8 +64,8 @@ def transactions_to_debt(trans: List[Transaction]):
 
 if __name__ == '__main__':
     transactions = [
-        Transaction('0', ['1', '2', '3'], 60),
-        Transaction('4', ['0'], 90)
+        Transaction('0', ['0', '1', '2', '3'], 60),
+        Transaction('4', ['0', '4'], 90)
     ]
     print(transactions_to_debt(transactions))
 
