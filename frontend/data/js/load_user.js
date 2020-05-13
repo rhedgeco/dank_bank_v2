@@ -1,5 +1,3 @@
-let group_list = document.getElementById('groups'); //store reference to the list of groups
-
 export function getCookie(cname) {
   var name = cname + '=';
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -18,6 +16,7 @@ export function getCookie(cname) {
 
 export function configureGroups() {
   console.log('confirguring groups');
+  let group_list = document.getElementById('groups'); //store reference to the list of groups
   //add event listener to each group on the list
   for (let i = 0; i < group_list.childElementCount; i++) {
     let list_item = group_list.childNodes[i];
@@ -26,6 +25,8 @@ export function configureGroups() {
       window.location = 'group.html?group_id=' + list_item.id;
     });
   }
+  let last = group_list.childNodes[group_list.childElementCount - 1];
+  console.log(last.value);
 }
 
 export function loadUser() {
@@ -39,6 +40,7 @@ export function loadUser() {
       if (xhr.status === 200) {
         var json = JSON.parse(xhr.responseText);
         console.log(json);
+        let group_list = document.getElementById('groups'); //store reference to the list of groups
         document.getElementById('name').innerText = json['nickname']; //retrieve and display nick name
 
         // display user photo
