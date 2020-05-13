@@ -58,8 +58,10 @@ function loadGroup() {
   xhr.send();
 }
 
-window.onload = async function () {
+async function init_group() {
   let user = await loadUser();
   configureGroups();
   loadGroup();
-};
+}
+
+$(document).ready(init_group());
