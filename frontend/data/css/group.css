@@ -1,6 +1,7 @@
 button {
   background-color: #333333;
 }
+
 #group_page {
   height: 100vw;
   min-width: 70vw;
@@ -8,10 +9,13 @@ button {
   background-color: rgb(30, 30, 30);
   position: relative;
 }
+#groupName {
+  font-size: 4em;
+}
 
 #header {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px 20px 10px 60px;
   justify-content: space-between;
 }
 
@@ -78,9 +82,9 @@ fieldset {
 .debt_list > li {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 15px 35px;
   margin: 20px;
-  font-size: 20px;
+  font-size: 2em;
   border-radius: 35px;
   background-color: #666666;
 }
@@ -120,4 +124,8 @@ textarea {
 textarea:focus,
 input:focus {
   color: white;
+}
+
+.buttons {
+  padding-top: 20px;
 }

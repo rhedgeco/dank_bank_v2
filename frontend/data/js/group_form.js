@@ -1,11 +1,9 @@
-// Get the modal
+import { getCookie } from './load_user.js';
+
+// Get create group modal
 var modal = document.getElementById('createModal');
-
-// Get the button that opens the modal
 var btn = document.getElementById('createBtn');
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName('close')[0];
+var span = document.getElementById('close_group_form');
 
 // When the user clicks on the button, open the modal
 btn.onclick = function () {
@@ -19,7 +17,7 @@ span.onclick = function () {
 };
 
 //API call
-var btn2 = document.getElementById('create_form');
+var btn2 = document.getElementById('submit');
 
 btn2.onclick = function () {
   let xhr = new XMLHttpRequest();
@@ -33,8 +31,8 @@ btn2.onclick = function () {
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.onload = function () {
     if (xhr.status === 200) {
-      console.log('group successfully created');
-      location.reload();
+      console.log('YOOOOOOO');
+      modal.style.display = 'none';
     }
   };
   xhr.send();
