@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="data/css/group_styles.css"/>
     <link rel="stylesheet" href="data/css/index.css"/>
     <link rel="stylesheet" href="data/css/group.css"/>
-    <link rel="stylesheet" href="data/css/transactions.css"/>
+    <link rel="stylesheet" href="data/css/inspect_trans.css"/>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="data/js/google-oauth.js"></script>
     <script src="data/js/page_util.js"></script>
@@ -20,7 +20,7 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
-<body>
+<body style="background-color: #202020">
 
 
 <!--NavBar-->
@@ -86,32 +86,20 @@
 </div>
 <!--EndNavBar-->
 
-<div id="page_content" style="background-color: #202020">
-    <div id="header">
-        <div class="left">
-            <h3 id="group_title">Work Buddies</h3>
-            <h5>Transactions</h5>
-        </div>
-        <div class="right buttons">
-            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light" onclick="relocate()">ADD TRANSACTION</button>
-            <div style="margin-top: 8px">
-                <button id="view_group" class="btn grey darken-2 waves-effect waves-light">View Group</button>
-            </div>
-        </div>
-    </div>
-    <div class="main">
-        <ul id="trans_list" class="transaction_list">
-        </ul>
-    </div>
+<div id="transaction">
+    <h3>Transaction</h3>
+    <h5 id="trans_content"></h5>
+    <h4>Debtors</h4>
+    <ul id="debtors">
+    </ul>
 </div>
 
 <!--AlwaysIncludeThese-->
 <script src="data/js/jquery-3.4.1.min.js"></script>
-<script src="data/js/navigation_init.js"></script>
 <script src="data/js/materialize.min.js"></script>
+<script src="data/js/navigation_init.js"></script>
 <script src="data/js/create_group.js"></script>
-<script src="data/js/transactions_init.js"></script>
-<script src="data/js/add_transaction.js"></script>
+<script src="data/js/inspect_trans.js"></script>
 <script>M.AutoInit();</script>
 <!--AlwaysIncludeThese-->
 </body>
