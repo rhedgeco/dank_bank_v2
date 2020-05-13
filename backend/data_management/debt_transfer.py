@@ -30,7 +30,7 @@ def transactions_to_debt(trans: List[Transaction]):
                 break
             elif d.sender == receive:
                 d.amount = d.amount - amount
-                if d.amount > 0:
+                if d.amount >= 0:
                     add_trans_to_debts(amount, send, d.receiver)
                 else:
                     debts.remove(d)
@@ -40,7 +40,7 @@ def transactions_to_debt(trans: List[Transaction]):
                 break
             elif d.receiver == send:
                 d.amount = d.amount - amount
-                if d.amount > 0:
+                if d.amount >= 0:
                     add_trans_to_debts(amount, d.sender, receive)
                 else:
                     debts.remove(d)
@@ -64,10 +64,8 @@ def transactions_to_debt(trans: List[Transaction]):
 
 if __name__ == '__main__':
     transactions = [
-        Transaction('0', ['1', '2', '3'], 120),
-        Transaction('1', ['0', '2', '3'], 60),
-        Transaction('0', ['1', '2', '3'], 400),
-        Transaction('3', ['1', '2', '0'], 20)
+        Transaction('0', ['1', '2', '3'], 60),
+        Transaction('4', ['0'], 90)
     ]
     print(transactions_to_debt(transactions))
 

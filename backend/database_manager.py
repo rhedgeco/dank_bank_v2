@@ -102,13 +102,14 @@ class DatabaseManager:
         debts: List[Debt] = transactions_to_debt(trans_list)
         debts_json = []
         for d in debts:
-            debts_json.append(
-                {
-                    'from': d.sender,
-                    'to': d.receiver,
-                    'amount': d.amount
-                }
-            )
+            if d.amount > 0:
+                debts_json.append(
+                    {
+                        'from': d.sender,
+                        'to': d.receiver,
+                        'amount': d.amount
+                    }
+                )
 
         group_info = {
             'group_name': group['name'],
@@ -148,7 +149,7 @@ class DatabaseManager:
         self._validate_user_session(user['user_id'])
         return user
 
-    def _get_user_by_id(self, user_id:str):
+    def _get_user_by_id(self, user_id: str):
         user = self.db.fetchone_query(f"SELECT * FROM users WHERE user_id='{user_id}'")
         if not user:
             raise falcon.HTTPBadRequest('Could not locate user.')

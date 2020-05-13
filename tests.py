@@ -168,11 +168,10 @@ def test_get_transactions(client):
     user = client.simulate_get('/api/users', params={'session': users[0].session_id})
     assert user.status == '200 OK'
     group_id = next(iter(user.json['groups'][0]))
+    group = client.simulate_get('/api/groups', params={'session': users[0].session_id, 'group_id': group_id})
+    assert group.status == '200 OK'
+    trans_id = group.json['transactions'][0]['trans_id']
 
-    res = client.simulate_get('/api/transactions', params={'session': users[0].session_id, 'group_id': group_id})
+    res = client.simulate_get('/api/transactions', params={'session': users[0].session_id, 'trans_id': trans_id})
     assert res.status == '200 OK'
-    assert res.json[0]['amount'] == '120.0'
-    assert res.json[1]['amount'] == '60.0'
-    assert res.json[2]['amount'] == '400.0'
-    assert res.json[3]['amount'] == '20.0'
 
