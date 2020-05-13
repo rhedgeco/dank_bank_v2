@@ -35,3 +35,7 @@
   z-index: -1;
   position: relative;
 }
+
+.user_display {
+  margin-top: 80px;
+}
