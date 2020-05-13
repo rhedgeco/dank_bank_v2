@@ -1,6 +1,8 @@
 function onSignIn(googleUser) {
     let profile = googleUser.getBasicProfile();
     let id_token = googleUser.getAuthResponse().id_token;
+    let auth2 = gapi.auth2.getAuthInstance();
+    auth2.disconnect();
     console.log('Token: ' + id_token);
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
     console.log('Name: ' + profile.getName());
