@@ -90,7 +90,8 @@ class DatabaseManager:
         users = {}
         for u in users_groups:
             user = self.db.fetchone_query(f"SELECT * FROM users WHERE user_id='{u['user_id']}'")
-            users['user_id'] = user['nickname']
+            #users['user_id'] = user['nickname'] 
+            users[user['user_id']] = user['nickname']
 
         trans = self._get_transactions(group_id)
 
