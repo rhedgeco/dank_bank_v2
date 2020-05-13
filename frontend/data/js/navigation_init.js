@@ -18,7 +18,6 @@ function populate_groups(group_list, groups) {
     //go through list of groups and create list elements
     for (let i = 0; i < groups.length; i++) {
         let group = document.createElement('li');
-        console.log(group.id);
         group.id = Object.keys(groups[i]); //set id to the same group id from the db
         group.appendChild(document.createTextNode(Object.values(groups[i])[0])); //get group name from the object
         group_list.appendChild(group);
