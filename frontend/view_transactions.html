@@ -1,128 +1,140 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Dank Bank v.2</title>
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"
-    />
-    <link rel="stylesheet" href="https://use.typekit.net/ktz5tbj.css" />
-    <link rel="stylesheet" href="data/css/index.css" />
-    <link rel="stylesheet" href="data/css/view_transaction.css" />
-    <link rel="stylesheet" href="data/css/group_styles.css" />
-    <link rel="stylesheet" href="data/css/group.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/ktz5tbj.css"/>
+    <link rel="stylesheet" href="data/css/index.css"/>
+    <link rel="stylesheet" href="data/css/group_styles.css"/>
+    <link rel="stylesheet" href="data/css/group.css"/>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="data/js/google-oauth.js"></script>
+    <script src="data/js/page_util.js"></script>
     <meta
-      name="google-signin-client_id"
-      content="67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com"
+            name="google-signin-client_id"
+            content="67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com"
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  </head>
-  <body>
-    <div id="menu">
-      <h3>Jane Doe</h3>
-      <h5>Groups</h5>
-      <ul id="groups">
-        <li>Work Buddies</li>
-        <li>Bar Gang</li>
-        <li>Study Group</li>
-        <li>Roomies</li>
-      </ul>
-    </div>
-    <div id="group_page">
-      <div id="header">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+<body>
+
+
+
+<!--NavBar-->
+<div id="nav_bar">
+    <nav class="light-green darken-4">
+        <div class="nav-wrapper">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large">
+                <i class="material-icons">menu</i>
+            </a>
+            <a href="home.html" class="brand-logo">Logo</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a onclick="sign_out();">Sign Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav grey darken-3">
+        <li>
+            <div class="user-view">
+                <div class="background">
+                    <img id="" src="">
+                </div>
+                <a href="/home.html" style="display: flex; padding-bottom: 16px">
+                    <img id="photo" class="circle" src="">
+                    <span id="name" class="white-text name" style="font-size: 20px; padding-left: 16px">John Doe</span>
+                </a>
+                <a href="#name"></a>
+            </div>
+        </li>
+        <div class="divider"></div>
+        </li>
+        <li><a class="subheader grey-text text-lighten-2">Groups</a></li>
+        <div id="groups" style="margin-left: 32px; list-style-type: none">
+
+        </div>
+    </ul>
+</div>
+<!--EndNavBar-->
+
+
+
+<div id="page_content" style="background-color: #202020">
+    <div id="header">
         <div class="left">
-          <h3 id="group_name">Work Buddies</h3>
-          <p id="group_count">5 members</p>
+            <h3 id="group_name">Work Buddies</h3>
+            <p id="group_count">5 members</p>
         </div>
         <div class="right">
-          <button id="transBtn">Add transaction</button>
-          <div>
-            <button>View Debt</button>
-            <button>View Transactions</button>
-          </div>
+            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light">Add transaction</button>
+            <div style="margin-top: 8px">
+                <button class="btn grey darken-2 waves-effect waves-light">View Debt</button>
+                <button class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
+            </div>
         </div>
-      </div>
-      <div class="main">
+    </div>
+    <div class="main">
         <div id="transModal" class="modal">
-          <h3>Add Transaction <span class="close">&times;</span></h3>
-          <!-- Modal content -->
-          <div class="modal-content">
-            <form>
-              <fieldset>
-                <select style="display: block;">
-                  <option value="" disabled selected>Who</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-                <input type="number" min="0" step=".01" placeholder="$0.00" />
-                <input type="text" placeholder='transaction (e.g. "lunch")' />
-                <span>split between:</span>
-                <div class="split-list">
-                  <div>
-                    <input type="checkbox" id="test5" />
-                    <label for="test5">Red</label>
-                  </div>
-                  <div>
-                    <input type="checkbox" id="test4" />
-                    <label for="test4">blue</label>
-                  </div>
-                </div>
-                <button class="btn waves-effect waves-light" id="trans_form">
-                  add
-                </button>
-              </fieldset>
-              <!-- <div class="input-field col s12">
-                <select style="display: block;">
-                  <option value="" disabled selected>Who</option>
-                  <option value="1">Option 1</option>
-                  <option value="2">Option 2</option>
-                  <option value="3">Option 3</option>
-                </select>
-              </div>
-              <div class="input-group mb-3">
-                <input type="number" min="0" step=".01" placeholder="$0.00" />
-              </div>
-              <div class="input-group mb-3">
-                <input type="text" placeholder='transaction (e.g. "lunch")' />
-              </div>
-              <div>
-                <span>split between</span>
-                <p>
-                  <input type="checkbox" id="test5" />
-                  <label for="test5">Red</label>
-                </p> -->
-              <!-- </div> -->
-            </form>
-          </div>
+            <h3>Add Transaction <span class="close">&times;</span></h3>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <form>
+                    <fieldset>
+                        <select style="display: block;">
+                            <option value="" disabled selected>Who</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                        <input type="number" min="0" step=".01" placeholder="$0.00"/>
+                        <input type="text" placeholder='transaction (e.g. "lunch")'/>
+                        <span>split between:</span>
+                        <div class="split-list">
+                            <div>
+                                <input type="checkbox" id="test5"/>
+                                <label for="test5">Red</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="test4"/>
+                                <label for="test4">blue</label>
+                            </div>
+                        </div>
+                        <button class="btn waves-effect waves-light" id="trans_form">
+                            add
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
         </div>
         <ul class="transaction_list">
-          <li>
-            <p>Example transaction</p>
-            <p>$100.00</p>
-          </li>
-          <li>
-            <p>Example transaction</p>
-            <p>$100.00</p>
-          </li>
-          <li>
-            <p>Example transaction</p>
-            <p>$100.00</p>
-          </li>
-          <li>
-            <p>Example transaction</p>
-            <p>$100.00</p>
-          </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
+            <li>
+                <p>Example transaction</p>
+                <p>$100.00</p>
+            </li>
         </ul>
-      </div>
     </div>
-    <script src="data/js/script.js"></script>
-  </body>
+</div>
+
+<!--AlwaysIncludeThese-->
+<script src="data/js/navigation_init.js"></script>
+<script src="data/js/jquery-3.4.1.min.js"></script>
+<script src="data/js/materialize.min.js"></script>
+<script src="data/js/navigation_init.js"></script>
+<script>M.AutoInit();</script>
+<!--AlwaysIncludeThese-->
+
+</body>
 </html>
