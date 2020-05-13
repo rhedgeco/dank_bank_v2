@@ -34,7 +34,8 @@
             <ul id="nav-mobile" class="right">
                 <li class="hide-on-med-and-down"><a onclick="create_btn_clicked();">+ New Group</a></li>
                 <li class="hide-on-med-and-down"><a href="join_group.html">Join Group</a></li>
-                <li class="hide-on-med-and-down"><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
+                <li class="hide-on-med-and-down"><a onclick="sign_out();"
+                                                    style="color: #ff686d; background-color: #303030">Sign Out</a></li>
             </ul>
         </div>
     </nav>
@@ -89,7 +90,7 @@
 <div id="page_content">
     <div id="transaction_window">
         <h3>Add Transaction</h3>
-        <form id="transaction_content" onsubmit="return false;">
+        <form id="transaction_content" onsubmit="submit_form(); return false;">
             <div class="payment_text">
                 You paid
                 <div class="input-field inline">
@@ -105,11 +106,8 @@
             </div>
             <p class="payment_text">
                 Split with
-                <a class="btn btn-floating light-green waves-effect darken-3" style="margin-left: 10px;">+</a>
             </p>
-            <ul class="group_list" id="member_list" >
-                <li class="collection-item">Jeevanesh Lota</li>
-                <li class="collection-item">Malaak Khalil</li>
+            <ul class="group_list" id="member_list">
             </ul>
             <button class="btn light-green darken-2 waves-effect waves-light" type="submit" id="submit_transaction">
                 Add Transaction
@@ -125,6 +123,6 @@
 <script src="data/js/create_group.js"></script>
 <script>M.AutoInit();</script>
 <!--AlwaysIncludeThese-->
-<script src="data/js/add_transaction.js"></script>
+<script src="data/js/create_trans.js"></script>
 </body>
 </html>

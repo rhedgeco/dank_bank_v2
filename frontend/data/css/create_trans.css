@@ -44,6 +44,6 @@
   cursor: pointer;
 }
 
-/* .group_list li:active {
-  background-color: #282828;
-} */
+.group_list li.selected {
+  background-color: #689F38;
+}
