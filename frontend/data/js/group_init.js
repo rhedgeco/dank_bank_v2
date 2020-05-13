@@ -58,12 +58,7 @@ function loadGroup() {
   xhr.send();
 }
 
-<<<<<<< HEAD
-window.onload = async function () {
-  this.console.log('relaoding');
-=======
 async function init_group() {
->>>>>>> master
   let user = await loadUser();
   configureGroups();
   loadGroup();
