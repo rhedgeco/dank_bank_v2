@@ -2,6 +2,18 @@ function goto_group_page(group_id) {
     window.location = 'group.html?group_id=' + group_id;
 }
 
+function populate_photos(photos, photo) {
+    for (let i = 0; i < photos.length; i++) {
+        photos[i].src = photo;
+    }
+}
+
+function populate_names(names, name) {
+    for (let i = 0; i < names.length; i++) {
+        names[i].innerText = name;
+    }
+}
+
 function init_navigation() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'api/users?session=' + getCookie('session_id'));
@@ -11,8 +23,10 @@ function init_navigation() {
             window.location = '/';
         } else {
             let json = JSON.parse(xhr.responseText);
-            document.getElementById('name').innerText = json['nickname']; //retrieve and display nick name
-            document.getElementById('photo').src = json['photo'];
+            let names = document.getElementsByClassName('user-name');
+            let photos = document.getElementsByClassName('login-photo');
+            populate_names(names, json['nickname']);
+            populate_photos(photos, json['photo']);
             let groups = json['groups'];
             //go through list of groups and create list elements
             let group_list = document.getElementById('groups'); //store reference to the list of groups
