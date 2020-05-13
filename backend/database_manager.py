@@ -90,7 +90,7 @@ class DatabaseManager:
         users = {}
         for u in users_groups:
             user = self.db.fetchone_query(f"SELECT * FROM users WHERE user_id='{u['user_id']}'")
-            #users['user_id'] = user['nickname'] 
+            # users['user_id'] = user['nickname']
             users[user['user_id']] = user['nickname']
 
         trans = self._get_transactions(group_id)
@@ -118,6 +118,12 @@ class DatabaseManager:
         }
 
         return group_info
+
+    def get_transaction_info(self, session: str, trans_id: str):
+        user = self._get_user_from_database(session)
+        trans = self.db.fetchone_query(f"SELECT * FROM transactions WHERE trans_id='{trans_id}'")
+        self._validate_user_in_group(user['user_id'], trans['group_id'])
+        return trans
 
     def _get_transactions(self, group_id: str):
         return self.db.fetchall_query(f"SELECT * FROM transactions WHERE group_id='{group_id}'")

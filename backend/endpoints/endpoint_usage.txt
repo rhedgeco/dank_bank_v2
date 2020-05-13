@@ -41,6 +41,6 @@ transactions:
         - amount : a decimal number representing the amount paid in USD
         - paid : a comma separated list of the id's who were a part of the transaction (e.g. 87d8as75,986c8z7d,98v69z)
 
-    GET - gets the transactions for a group
+    GET - gets info for a transaction
         - session : the id from the current session
-        - group_id : the id representing the group
+        - trans_id : id for the transaction
