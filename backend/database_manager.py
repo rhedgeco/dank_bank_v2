@@ -101,7 +101,6 @@ class DatabaseManager:
         debts: List[Debt] = transactions_to_debt(trans_list)
         debts_json = []
         for d in debts:
-            from_user =
             debts_json.append(
                 {
                     'from': d.sender,
