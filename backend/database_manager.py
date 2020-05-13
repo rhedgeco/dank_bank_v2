@@ -87,12 +87,10 @@ class DatabaseManager:
         group = self._validate_user_group(session, group_id)
 
         users_groups = self.db.fetchall_query(f"SELECT * FROM users_groups WHERE group_id='{group_id}'")
-        users = []
+        users = {}
         for u in users_groups:
             user = self.db.fetchone_query(f"SELECT * FROM users WHERE user_id='{u['user_id']}'")
-            users.append({
-                user['user_id']: user['nickname']
-            })
+            users['user_id'] = user['nickname']
 
         trans = self._get_transactions(group_id)
 
