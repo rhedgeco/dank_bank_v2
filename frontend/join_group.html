@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="data/css/group_styles.css"/>
     <link rel="stylesheet" href="data/css/index.css"/>
     <link rel="stylesheet" href="data/css/group.css"/>
+    <link rel="stylesheet" href="data/css/create_trans.css"/>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="data/js/google-oauth.js"></script>
     <script src="data/js/page_util.js"></script>
@@ -73,9 +74,9 @@
                         />
                         <label class="active" for="group_name">Group Name</label>
                     </div>
-                    <span class="btn waves-effect waves-light light-green darken-3" id="create_form">
+                    <button class="btn waves-effect waves-light light-green darken-3" id="create_form">
                         Create
-                    </span>
+                    </button>
                 </div>
             </form>
         </div>
@@ -83,39 +84,29 @@
 </div>
 <!--EndNavBar-->
 
-<!--PUT UR STUFF HERE-->
-<div id="page_content" style="background-color: #202020">
-    <div id="header">
-        <div class="left">
-            <h3 id="groupName"></h3>
-            <p id="group_count"></p>
-        </div>
-        <div class="right buttons">
-            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light">Add transaction</button>
-            <div style="margin-top: 8px">
-                <button class="btn grey darken-2 waves-effect waves-light">View Debt</button>
-                <button class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
+<div id="page_content">
+    <div id="transaction_window">
+        <h3>Join Group</h3>
+        <form id="transaction_content" onsubmit="join_group(); return false;">
+            <p class="payment_text">Enter group code.</p>
+            <div class="input-field">
+                <input id="group_code" type="text" class="validate">
+                <label for="group_code">Group Code</label>
             </div>
-        </div>
-    </div>
-    <div class="main">
-        <ul class="debt_list" id="debtList">
-            <li>
-                <p>Example transaction</p>
-                <p>$100.00</p>
-            </li>
-        </ul>
+            <button class="btn light-green darken-2 waves-effect waves-light" type="submit">
+                Join
+            </button>
+        </form>
     </div>
 </div>
-
 
 <!--AlwaysIncludeThese-->
 <script src="data/js/jquery-3.4.1.min.js"></script>
 <script src="data/js/materialize.min.js"></script>
 <script src="data/js/navigation_init.js"></script>
+<script src="data/js/create_group.js"></script>
+<script src="data/js/join_group.js"></script>
 <script>M.AutoInit();</script>
 <!--AlwaysIncludeThese-->
-<script type="module" src="data/js/group_init.js"></script>
-<script src="data/js/create_group.js"></script>
 </body>
 </html>
