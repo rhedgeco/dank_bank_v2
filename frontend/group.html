@@ -89,11 +89,12 @@
 <div id="page_content" style="background-color: #202020">
     <div id="header">
         <div class="left">
-            <h3 id="groupName"></h3>
+            <h2 id="groupName"></h2>
+            <h6 id="groupID"></h6>
             <p id="group_count"></p>
         </div>
         <div class="right buttons">
-            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light">Add transaction</button>
+            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light" onclick="relocate()">ADD TRANSACTION</button>
             <div style="margin-top: 8px">
                 <button class="btn grey darken-2 waves-effect waves-light">View Debt</button>
                 <button class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
@@ -119,5 +120,6 @@
 <!--AlwaysIncludeThese-->
 <script type="module" src="data/js/group_init.js"></script>
 <script src="data/js/create_group.js"></script>
+<script src="data/js/add_transaction.js"></script>
 </body>
 </html>

@@ -19,6 +19,7 @@ function loadGroup() {
       console.log(groupInfo);
       console.log(Object.keys(groupInfo['users']));
       document.getElementById('groupName').innerText = groupInfo['group_name'];
+      document.getElementById('groupID').innerHTML = id;
 
       if (Object.keys(groupInfo['users']).length < 2) {
         document.getElementById('group_count').innerText =
