@@ -29,11 +29,12 @@ function loadGroup() {
           Object.keys(groupInfo['users']).length + ' member';
       }
 
+      let members = Object.values(groupInfo['users']);
       let debtList = document.getElementById('debtList');
       let debts = groupInfo['debts'];
       console.log(debts);
 
-      for (let i = 0; i < 1; i++) {
+      for (let i = 0; i < members.length; i++) {
         let debtItem = document.createElement('li');
         let debt = document.createElement('p');
         let amount = document.createElement('p');
@@ -55,6 +56,7 @@ function loadGroup() {
         debtItem.appendChild(amount);
         debtList.appendChild(debtItem);
       }
+      // window.location = 'group.html?group_id=' + id + 'members=' +
     }
   };
   xhr.send();
