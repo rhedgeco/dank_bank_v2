@@ -17,7 +17,7 @@ span.onclick = function () {
 };
 
 //API call
-var btn2 = document.getElementById('submit_form');
+var btn2 = document.getElementById('submit');
 
 btn2.onclick = function () {
   let xhr = new XMLHttpRequest();
@@ -32,6 +32,7 @@ btn2.onclick = function () {
   xhr.onload = function () {
     if (xhr.status === 200) {
       console.log('YOOOOOOO');
+      modal.style.display = 'none';
     }
   };
   xhr.send();

@@ -1,13 +1,10 @@
 import { loadUser, getCookie, configureGroups } from './load_user.js';
-var groupID;
 
 function loadGroup() {
-  if (!groupID) {
-    var url_string = window.location;
-    var url = new URL(url_string);
-    var id = url.searchParams.get('group_id');
-    groupID = id;
-  }
+  var url_string = window.location;
+  var url = new URL(url_string);
+  var id = url.searchParams.get('group_id');
+  console(id);
 
   let xhr = new XMLHttpRequest();
   xhr.open(
@@ -20,8 +17,7 @@ function loadGroup() {
     if (xhr.status === 200) {
       var groupInfo = JSON.parse(xhr.responseText);
       console.log(groupInfo);
-      document.getElementById('group_header').innerText =
-        groupInfo['group_name'];
+      document.getElementById('header').innerText = groupInfo['group_name'];
 
       if (groupInfo['users'].length < 2) {
         document.getElementById('group_count').innerText =
@@ -54,15 +50,8 @@ function loadGroup() {
   xhr.send();
 }
 
-export function setGroupID(id) {
-  group.id = id;
-  console.log(group.id);
-}
-
 window.onload = async function () {
   let user = await loadUser();
   configureGroups();
   loadGroup();
 };
-
-export { groupID };

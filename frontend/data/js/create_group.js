@@ -1,5 +1,4 @@
 import { getCookie } from './load_user.js';
-import { groupID } from './group_init.js';
 
 //API call
 var btn2 = document.getElementById('create_form');
