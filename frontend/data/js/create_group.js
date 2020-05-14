@@ -6,7 +6,7 @@ var span = document.getElementsByClassName('close')[0];
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
-    modal.style.display = 'none';
+  modal.style.display = 'none';
 };
 
 //API call
@@ -24,14 +24,13 @@ function create_group() {
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
         if (xhr.status === 200) {
-            console.log('group successfully created');
-            location.reload();
+            window.location = 'group.html?group_id=' + xhr.responseText;
         }
     };
     xhr.send();
 };
 
 function create_btn_clicked() {
-    modal.style.display = 'block';
-    console.log(document.getElementById('group_name').value);
+  modal.style.display = 'block';
+  console.log(document.getElementById('group_name').value);
 }
