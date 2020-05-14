@@ -32,6 +32,7 @@ class DatabaseManager:
                            f"VALUES ('{group_id}', '{group_name}')")
         self.db.send_query(f"INSERT INTO users_groups (user_id, group_id) "
                            f"VALUES ('{user['user_id']}', '{group_id}')")
+        return group_id
 
     def add_user_to_group(self, session: str, group_id: str):
         user = self._get_user_from_database(session)

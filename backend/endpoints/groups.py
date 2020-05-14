@@ -23,7 +23,7 @@ class Groups:
 
         session = req.params['session'].replace("'", "").replace('"', '')
         name = req.params['group_name'].replace("'", "").replace('"', '')
-        self.db.create_new_group(session, name)
+        resp.body = self.db.create_new_group(session, name)
 
     def on_put(self, req, resp):
         if not validate_params(req.params, 'session', 'group_id'):
