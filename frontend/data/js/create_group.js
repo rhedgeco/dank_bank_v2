@@ -13,13 +13,15 @@ span.onclick = function () {
 var btn2 = document.getElementById('create_form');
 
 function create_group() {
+    let element = document.getElementById('group_name').value;
+    if(element === "") return;
     let xhr = new XMLHttpRequest();
     xhr.open(
         'POST',
         'api/groups?session=' +
         getCookie('session_id') +
         '&group_name=' +
-        document.getElementById('group_name').value
+        element
     );
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function () {
@@ -28,7 +30,7 @@ function create_group() {
         }
     };
     xhr.send();
-};
+}
 
 function create_btn_clicked() {
   modal.style.display = 'block';
