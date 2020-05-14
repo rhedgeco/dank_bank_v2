@@ -12,7 +12,7 @@ span.onclick = function () {
 //API call
 var btn2 = document.getElementById('create_form');
 
-btn2.onclick = function () {
+function create_group() {
     let xhr = new XMLHttpRequest();
     xhr.open(
         'POST',

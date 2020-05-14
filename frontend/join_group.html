@@ -67,7 +67,7 @@
         <h3>Create Group<span class="close">&times;</span></h3>
         <!-- Modal content -->
         <div class="modal-content">
-            <form id="group_form">
+            <form id="group_form" onsubmit="create_group(); return false;">
                 <div>
                     <div class="input-field col s6">
                         <input
@@ -75,11 +75,11 @@
                                 type="text"
                                 class="validate"
                                 value=""
-                                placeholder="(e.g. Roommates)"
+                                placeholder="(e.g. Roommates)" required
                         />
                         <label class="active" for="group_name">Group Name</label>
                     </div>
-                    <button class="btn waves-effect waves-light light-green darken-3" id="create_form">
+                    <button class="btn waves-effect waves-light light-green darken-3" id="create_form" type="submit">
                         Create
                     </button>
                 </div>

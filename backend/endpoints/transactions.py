@@ -28,4 +28,5 @@ class Transactions:
         paid = req.params['paid'].replace("'", "").replace('"', '')
         desc = req.params['description'].replace("'", "").replace('"', '')
 
-        self.db.create_transaction(session, group_id, amount, paid, desc)
+        if amount > 0:
+            self.db.create_transaction(session, group_id, amount, paid, desc)
