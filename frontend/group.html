@@ -29,11 +29,13 @@
             <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large" style="padding-left: 10px;">
                 <i class="material-icons">menu</i>
             </a>
-            <a href="/home.html" class="brand-logo" style="font-family: 'Oskar', sans-serif; font-size: 45px; padding-left: 10px;">Dank Bank</a>
+            <a href="/home.html" class="brand-logo"
+               style="font-family: 'Oskar', sans-serif; font-size: 45px; padding-left: 10px;">Dank Bank</a>
             <ul id="nav-mobile" class="right">
                 <li class="hide-on-med-and-down"><a onclick="create_btn_clicked();">+ New Group</a></li>
                 <li class="hide-on-med-and-down"><a href="join_group.html">Join Group</a></li>
-                <li class="hide-on-med-and-down"><a onclick="sign_out();" style="color: #ff686d; background-color: #303030">Sign Out</a></li>
+                <li class="hide-on-med-and-down"><a onclick="sign_out();"
+                                                    style="color: #ff686d; background-color: #303030">Sign Out</a></li>
             </ul>
         </div>
     </nav>
@@ -71,7 +73,8 @@
                                 id="group_name"
                                 type="text"
                                 class="validate"
-                                value="Roommates"
+                                value=""
+                                placeholder="(e.g. Roommates)"
                         />
                         <label class="active" for="group_name">Group Name</label>
                     </div>
@@ -94,7 +97,9 @@
             <p id="group_count"></p>
         </div>
         <div class="right buttons">
-            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light" onclick="relocate()">ADD TRANSACTION</button>
+            <button id="transBtn" class="btn light-green darken-3 waves-effect waves-light" onclick="relocate()">ADD
+                TRANSACTION
+            </button>
             <div style="margin-top: 8px">
                 <button id="view_trans" class="btn grey darken-2 waves-effect waves-light">View Transactions</button>
             </div>
