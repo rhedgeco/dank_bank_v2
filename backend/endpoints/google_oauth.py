@@ -8,7 +8,7 @@ from backend.backend_utils import validate_params
 
 from google.oauth2 import id_token
 
-CLIENT_ID = '67665061536-mh57v3d9uef3edep23kjmgeqlqrobb1b.apps.googleusercontent.com'
+CLIENT_ID = '942275526455-vcfpf01bgd5latou8min45n830k6kalq.apps.googleusercontent.com'
 
 
 class GoogleOauth:
